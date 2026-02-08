@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence, motion } from 'framer-motion';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { StoreProvider } from './context/StoreContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
@@ -114,6 +115,7 @@ function App() {
                 },
               }}
             />
+            <SpeedInsights />
           </div>
         </Router>
       </StoreProvider>
