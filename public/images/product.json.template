@@ -1,0 +1,11 @@
+{
+  "name": "Product Display Name",
+  "tag": "Anime",
+  "featured": false,
+  "price": 599,
+  "mrp": 699,
+  "stock": true,
+  "discount": 15,
+  "sizes": ["S", "M", "L", "XL", "XXL"],
+  "series": "On The Go Series"
+}

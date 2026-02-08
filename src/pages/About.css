@@ -1,0 +1,170 @@
+.about-page {
+  padding-top: 140px;
+  min-height: 100vh;
+}
+
+.about-hero {
+  padding: 60px 0;
+  background: linear-gradient(135deg, rgba(140, 144, 126, 0.1) 0%, rgba(140, 144, 126, 0.05) 100%);
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: var(--gray);
+  font-weight: 600;
+}
+
+.about-story {
+  padding: 80px 0;
+}
+
+.story-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.story-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+
+.series-section {
+  padding: 80px 0;
+  background: rgba(248, 244, 237, 0.3);
+}
+
+.series-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.series-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.series-card.reverse {
+  direction: rtl;
+}
+
+.series-card.reverse > * {
+  direction: ltr;
+}
+
+.series-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.series-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.series-content h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.series-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: var(--dark);
+}
+
+.values-section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.value-card {
+  padding: 40px 30px;
+  background: rgba(248, 244, 237, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(140, 144, 126, 0.15);
+  border-radius: 20px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.value-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.value-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: 160px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  .series-card,
+  .series-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    direction: ltr;
+  }
+
+  .series-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}

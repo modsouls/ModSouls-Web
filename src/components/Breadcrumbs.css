@@ -1,0 +1,30 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 12px 0;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+  color: var(--gray);
+  transition: var(--transition);
+  text-transform: capitalize;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+
+.breadcrumbs .separator {
+  color: rgba(140, 144, 126, 0.4);
+  margin: 0 4px;
+}
+
+.breadcrumbs .current {
+  color: var(--dark);
+  font-weight: 600;
+  text-transform: capitalize;
+}

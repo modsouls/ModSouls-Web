@@ -1,0 +1,252 @@
+.merchandising-page {
+  padding-top: 140px;
+  min-height: 100vh;
+}
+
+.merch-hero {
+  padding: 60px 0;
+  background: linear-gradient(135deg, rgba(140, 144, 126, 0.1) 0%, rgba(140, 144, 126, 0.05) 100%);
+}
+
+.hero-text {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.merch-main {
+  padding: 80px 0;
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.form-section {
+  padding: 50px;
+  background: rgba(248, 244, 237, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(140, 144, 126, 0.15);
+  border-radius: 25px;
+}
+
+.form-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.form-intro {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 35px;
+}
+
+.merch-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--dark);
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 18px;
+  border: 2px solid rgba(140, 144, 126, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(140, 144, 126, 0.15);
+  background: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.image-section {
+  position: sticky;
+  top: 160px;
+}
+
+.image-section img {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.merch-features {
+  padding: 80px 0;
+  background: rgba(248, 244, 237, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  padding: 35px 25px;
+  background: rgba(248, 244, 237, 0.5);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(140, 144, 126, 0.15);
+  border-radius: 20px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+.merch-process {
+  padding: 80px 0 100px;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+}
+
+.step {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.step-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+.step h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.step p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .merchandising-page {
+    padding-top: 160px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+
+  .merch-main,
+  .merch-features,
+  .merch-process {
+    padding: 60px 0;
+  }
+
+  .merch-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .form-section {
+    padding: 35px 25px;
+  }
+
+  .form-section h2,
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .image-section {
+    position: static;
+  }
+
+  .features-grid,
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+}
