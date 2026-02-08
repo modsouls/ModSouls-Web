@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './ProgressiveImage.css';
 
-const ProgressiveImage = ({ src, alt, className = '' }) => {
+const ProgressiveImage = ({ src, alt, className = '', priority = false }) => {
   const [imgSrc, setImgSrc] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -22,6 +22,8 @@ const ProgressiveImage = ({ src, alt, className = '' }) => {
           src={imgSrc}
           alt={alt}
           className={loading ? 'loading' : 'loaded'}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
         />
       )}
     </div>

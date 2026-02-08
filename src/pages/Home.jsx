@@ -41,7 +41,12 @@ const Home = () => {
           {heroBanners.map((banner, index) => (
             <SwiperSlide key={index}>
               <div className="hero-slide">
-                <img src={banner} alt={`ModSouls Banner ${index + 1}`} />
+                <img 
+                  src={banner} 
+                  alt={`ModSouls Banner ${index + 1}`}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={index === 0 ? 'high' : 'auto'}
+                />
               </div>
             </SwiperSlide>
           ))}
@@ -164,7 +169,11 @@ const Home = () => {
             <div className="series-images-row">
               <Link to="/shop?series=On The Go Series" className="series-item">
                 <div className="series-image">
-                  <img src="/images/Posters/On the Go Series.png" alt="On The Go Series" />
+                  <img 
+                    src="/images/Posters/On the Go Series.png" 
+                    alt="On The Go Series"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="series-info">
                   <h3>On The Go Series</h3>
@@ -174,7 +183,11 @@ const Home = () => {
 
               <Link to="/shop?series=On The Hood Series" className="series-item">
                 <div className="series-image">
-                  <img src="/images/Posters/On the Hood Series.png" alt="On The Hood Series" />
+                  <img 
+                    src="/images/Posters/On the Hood Series.png" 
+                    alt="On The Hood Series"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="series-info">
                   <h3>On The Hood Series</h3>
@@ -195,7 +208,11 @@ const Home = () => {
             className="merch-promo"
           >
             <div className="merch-promo-image">
-              <img src="/images/Merchandising Poster.png" alt="Custom Merchandising" />
+              <img 
+                src="/images/Merchandising Poster.png" 
+                alt="Custom Merchandising"
+                loading="lazy"
+              />
             </div>
             <div className="merch-promo-content">
               <h2>Custom Merchandising</h2>

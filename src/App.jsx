@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence, motion } from 'framer-motion';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import { StoreProvider } from './context/StoreContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
@@ -8,18 +10,20 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ExitIntent from './components/ExitIntent';
 import MobileNav from './components/MobileNav';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import ProductDetail from './pages/ProductDetail';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import Wishlist from './pages/Wishlist';
-import Merchandising from './pages/Merchandising';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import SizeGuide from './pages/SizeGuide';
-import NotFound from './pages/NotFound';
+import { lazyLoad } from './utils/lazyLoad';
 import './App.css';
+
+const Home = lazyLoad(() => import('./pages/Home'));
+const Shop = lazyLoad(() => import('./pages/Shop'));
+const ProductDetail = lazyLoad(() => import('./pages/ProductDetail'));
+const Cart = lazyLoad(() => import('./pages/Cart'));
+const Checkout = lazyLoad(() => import('./pages/Checkout'));
+const Wishlist = lazyLoad(() => import('./pages/Wishlist'));
+const Merchandising = lazyLoad(() => import('./pages/Merchandising'));
+const About = lazyLoad(() => import('./pages/About'));
+const Contact = lazyLoad(() => import('./pages/Contact'));
+const SizeGuide = lazyLoad(() => import('./pages/SizeGuide'));
+const NotFound = lazyLoad(() => import('./pages/NotFound'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -88,6 +92,8 @@ function App() {
             <MobileNav />
             <ScrollToTop />
             <ExitIntent />
+            <SpeedInsights />
+            <Analytics />
             <Toaster
               position="top-right"
               containerStyle={{
