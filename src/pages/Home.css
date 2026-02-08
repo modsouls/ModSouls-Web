@@ -280,8 +280,18 @@
   }
 
   .hero-swiper {
-    height: 50vh;
-    min-height: 350px;
+    height: auto;
+    min-height: unset;
+  }
+
+  .hero-slide img {
+    height: auto;
+    object-fit: contain;
+    transform: scale(1);
+  }
+
+  .hero-slide:hover img {
+    transform: scale(1);
   }
 
   .section {
