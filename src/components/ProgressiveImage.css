@@ -5,6 +5,11 @@
   height: 100%;
 }
 
+.progressive-image.error {
+  background: rgba(140, 144, 126, 0.15);
+  min-height: 200px;
+}
+
 .progressive-image img {
   width: 100%;
   height: 100%;

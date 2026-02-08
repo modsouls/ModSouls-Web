@@ -116,9 +116,9 @@
   font-size: 14px;
 }
 
-.price-current {
-  font-size: 1.3rem;
-  font-weight: 700;
+.cart-item .price-current {
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--dark);
 }
 

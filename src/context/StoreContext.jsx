@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import toast from 'react-hot-toast';
 
 const StoreContext = createContext();
@@ -14,36 +14,23 @@ const getStoredData = (key) => {
   return saved ? JSON.parse(saved) : [];
 };
 
-const showToast = (message) => {
+const toastWithDismiss = (message, duration = 4000) => {
   toast.success(
     (t) => (
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
         <span>{message}</span>
-        <button
-          onClick={() => toast.dismiss(t.id)}
-          style={{
-            marginLeft: 'auto',
-            background: 'none',
-            border: 'none',
-            fontSize: '18px',
-            cursor: 'pointer',
-            padding: '0 2px',
-            color: '#666'
-          }}
-        >
-          ×
-        </button>
+        <button onClick={() => toast.dismiss(t.id)} style={{ marginLeft: 'auto', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', padding: '0 2px', color: '#666' }}>×</button>
       </div>
     ),
-    { duration: 4000 }
+    { duration }
   );
 };
 
 const triggerShake = (selector) => {
-  const element = document.querySelector(selector);
-  if (element) {
-    element.classList.add('shake');
-    setTimeout(() => element.classList.remove('shake'), 600);
+  const el = document.querySelector(selector);
+  if (el) {
+    el.classList.add('shake');
+    setTimeout(() => el.classList.remove('shake'), 600);
   }
 };
 
@@ -51,86 +38,66 @@ export const StoreProvider = ({ children }) => {
   const [cart, setCart] = useState(() => getStoredData('modsouls_cart'));
   const [wishlist, setWishlist] = useState(() => getStoredData('modsouls_wishlist'));
 
-  useEffect(() => {
-    localStorage.setItem('modsouls_cart', JSON.stringify(cart));
-  }, [cart]);
+  useEffect(() => { localStorage.setItem('modsouls_cart', JSON.stringify(cart)); }, [cart]);
+  useEffect(() => { localStorage.setItem('modsouls_wishlist', JSON.stringify(wishlist)); }, [wishlist]);
 
-  useEffect(() => {
-    localStorage.setItem('modsouls_wishlist', JSON.stringify(wishlist));
-  }, [wishlist]);
-
-  const addToCart = (product, size, quantity = 1) => {
+  const addToCart = useCallback((product, size, quantity = 1) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === product.id && item.size === size);
       triggerShake('.cart-link');
-      
       if (existing) {
-        showToast(`Updated ${product.name} quantity`);
+        setTimeout(() => toastWithDismiss(`Updated ${product.name} quantity`), 0);
         return prev.map(item =>
-          item.id === product.id && item.size === size
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
+          item.id === product.id && item.size === size ? { ...item, quantity: item.quantity + quantity } : item
         );
       }
-      showToast(`Added ${product.name} to cart`);
+      setTimeout(() => toastWithDismiss(`Added ${product.name} to cart`), 0);
       return [...prev, { ...product, size, quantity }];
     });
-  };
+  }, []);
 
-  const removeFromCart = (productId, size) => {
+  const removeFromCart = useCallback((productId, size) => {
     setCart(prev => prev.filter(item => !(item.id === productId && item.size === size)));
-    showToast('Removed from cart');
-  };
+    toastWithDismiss('Removed from cart');
+  }, []);
 
-  const updateQuantity = (productId, size, quantity) => {
-    if (quantity < 1) return removeFromCart(productId, size);
-    setCart(prev =>
-      prev.map(item =>
-        item.id === productId && item.size === size ? { ...item, quantity } : item
-      )
-    );
-  };
+  const updateQuantity = useCallback((productId, size, quantity) => {
+    if (quantity < 1) {
+      setCart(prev => prev.filter(item => !(item.id === productId && item.size === size)));
+      toastWithDismiss('Removed from cart');
+      return;
+    }
+    setCart(prev => prev.map(item =>
+      item.id === productId && item.size === size ? { ...item, quantity } : item
+    ));
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCart([]);
-    showToast('Cart cleared');
-  };
+    toastWithDismiss('Cart cleared');
+  }, []);
 
-  const toggleWishlist = (product) => {
+  const toggleWishlist = useCallback((product) => {
     setWishlist(prev => {
       const exists = prev.find(item => item.id === product.id);
-      
       if (!exists) {
         triggerShake('.wishlist-link');
-        showToast(`Added ${product.name} to wishlist`);
+        setTimeout(() => toastWithDismiss(`Added ${product.name} to wishlist`), 0);
         return [...prev, product];
       }
-      showToast(`Removed ${product.name} from wishlist`);
+      setTimeout(() => toastWithDismiss(`Removed ${product.name} from wishlist`), 0);
       return prev.filter(item => item.id !== product.id);
     });
-  };
+  }, []);
 
-  const isInWishlist = (productId) => wishlist.some(item => item.id === productId);
+  const isInWishlist = useCallback((productId) => wishlist.some(item => item.id === productId), [wishlist]);
 
-  const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartTotal = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.quantity, 0), [cart]);
+  const cartCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
 
-  return (
-    <StoreContext.Provider
-      value={{
-        cart,
-        wishlist,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-        toggleWishlist,
-        isInWishlist,
-        cartTotal,
-        cartCount,
-      }}
-    >
-      {children}
-    </StoreContext.Provider>
-  );
+  const value = useMemo(() => ({
+    cart, wishlist, addToCart, removeFromCart, updateQuantity, clearCart, toggleWishlist, isInWishlist, cartTotal, cartCount
+  }), [cart, wishlist, addToCart, removeFromCart, updateQuantity, clearCart, toggleWishlist, isInWishlist, cartTotal, cartCount]);
+
+  return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 };

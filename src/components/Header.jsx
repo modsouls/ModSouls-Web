@@ -1,8 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useStore } from '../context/StoreContext';
-import { products } from '../data/products';
+import { searchProducts } from '../utils/searchProducts';
+import { getImageSrc } from '../data/products';
 import './Header.css';
 
 const Header = () => {
@@ -11,51 +12,15 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    if (searchQuery.trim().length > 1) {
-      const query = searchQuery.toLowerCase();
-      const results = products.filter(product => {
-        // Search in name
-        if (product.name.toLowerCase().includes(query)) return true;
-        // Search in tag
-        if (product.tag.toLowerCase().includes(query)) return true;
-        // Search in series
-        if (product.series.toLowerCase().includes(query)) return true;
-        // Search in type
-        if (product.type.toLowerCase().includes(query)) return true;
-        // Search for category keywords
-        const tag = product.tag.toLowerCase();
-        if (query.includes('anime') && (tag.includes('naruto') || tag.includes('jujutsu') || tag.includes('one piece') || tag.includes('solo leveling'))) return true;
-        if (query.includes('harry') || query.includes('potter')) return tag.includes('harry potter');
-        if (query.includes('marvel') || query.includes('spider')) return tag.includes('marvel');
-        if (query.includes('hoodie')) return product.type === 'hoodie';
-        if (query.includes('tshirt') || query.includes('t-shirt') || query.includes('tee')) return product.type === 'tee';
-        return false;
-      }).slice(0, 6);
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
-  }, [searchQuery]);
+  const searchResults = searchQuery.trim().length > 1 ? searchProducts(searchQuery, 6) : [];
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
-      setSearchQuery('');
-      setSearchOpen(false);
-      setSearchResults([]);
-    }
+    if (searchQuery.trim()) { navigate(`/shop?search=${encodeURIComponent(searchQuery)}`); closeSearch(); }
   };
 
-  const handleResultClick = (productId) => {
-    navigate(`/product/${productId}`);
-    setSearchQuery('');
-    setSearchOpen(false);
-    setSearchResults([]);
-  };
+  const closeSearch = () => { setSearchQuery(''); setSearchOpen(false); };
+  const handleResultClick = (productId) => { navigate(`/product/${productId}`); closeSearch(); };
 
   return (
     <motion.header
@@ -79,6 +44,7 @@ const Header = () => {
             <Link to="/shop" className="nav-link">Shop</Link>
             <Link to="/about" className="nav-link">About</Link>
             <Link to="/contact" className="nav-link">Contact</Link>
+            <Link to="/merchandising" className="nav-link">Merchandising</Link>
             <button 
               className="nav-link search-btn"
               onClick={() => setSearchOpen(!searchOpen)}
@@ -140,17 +106,7 @@ const Header = () => {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     autoFocus
                   />
-                  <button 
-                    type="button" 
-                    className="close-search"
-                    onClick={() => {
-                      setSearchQuery('');
-                      setSearchResults([]);
-                      setSearchOpen(false);
-                    }}
-                  >
-                    ×
-                  </button>
+                  <button type="button" className="close-search" onClick={closeSearch}>×</button>
                 </div>
               </form>
 
@@ -183,7 +139,7 @@ const Header = () => {
                       className="search-result-item"
                       onClick={() => handleResultClick(product.id)}
                     >
-                      <img src={product.images[0]} alt={product.name} />
+                      <img src={getImageSrc(product.images?.[0])} alt={product.name} />
                       <div className="result-info">
                         <h4>{product.name}</h4>
                         <p>

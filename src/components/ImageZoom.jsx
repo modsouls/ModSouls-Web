@@ -39,7 +39,7 @@ const ImageZoom = ({ src, alt }) => {
               exit={{ scale: 0.8 }}
               transition={{ type: 'spring', damping: 25 }}
             />
-            <button className="close-zoom">×</button>
+            <button type="button" className="close-zoom" onClick={() => setIsZoomed(false)} aria-label="Close">×</button>
           </motion.div>
         )}
       </AnimatePresence>

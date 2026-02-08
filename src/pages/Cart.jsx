@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useStore } from '../context/StoreContext';
-import { formatINR } from '../data/products';
+import { formatINR, getProductById, getImageSrc } from '../data/products';
 import './Cart.css';
 
 const Cart = () => {
@@ -38,19 +38,22 @@ const Cart = () => {
 
           <div className="cart-layout">
             <div className="cart-items">
-              {cart.map((item) => (
+              {cart.map((item) => {
+                const product = getProductById(item.id) || item;
+                const imgSrc = getImageSrc((product.images && product.images[0]) || '');
+                return (
                 <motion.div
                   key={`${item.id}-${item.size}`}
                   className="cart-item"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                 >
-                  <img src={item.images[0]} alt={item.name} className="item-image" />
+                  <img src={imgSrc} alt={product.name} className="item-image" />
                   <div className="item-details">
-                    <span className="item-tag">{item.tag}</span>
-                    <h3 className="item-name">{item.name}</h3>
+                    <span className="item-tag">{product.tag}</span>
+                    <h3 className="item-name">{product.name}</h3>
                     <p className="item-type">
-                      {item.type === 'tee' ? 'Oversized T-Shirt (Unisex)' : 'Premium Hoodie (Unisex)'} • Size {item.size}
+                      {(product.type || item.type) === 'tee' ? 'Oversized T-Shirt (Unisex)' : 'Premium Hoodie (Unisex)'} • Size {item.size}
                     </p>
                   </div>
                   <div className="item-quantity">
@@ -59,8 +62,8 @@ const Cart = () => {
                     <button onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}>+</button>
                   </div>
                   <div className="item-price">
-                    <span className="price-original">{formatINR(item.mrp)}</span>
-                    <span className="price-current">{formatINR(item.price * item.quantity)}</span>
+                    <span className="price-original">{formatINR(product.mrp || item.mrp)}</span>
+                    <span className="price-current">{formatINR((product.price || item.price) * item.quantity)}</span>
                   </div>
                   <button
                     className="item-remove"
@@ -69,7 +72,7 @@ const Cart = () => {
                     ×
                   </button>
                 </motion.div>
-              ))}
+              ); })}
             </div>
 
             <div className="cart-summary">

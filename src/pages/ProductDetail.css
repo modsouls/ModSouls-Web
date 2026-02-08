@@ -142,15 +142,15 @@
   margin-bottom: 24px;
 }
 
-.price-original {
+.product-detail .price-original {
   text-decoration: line-through;
   color: var(--gray);
-  font-size: 1.2rem;
+  font-size: 0.95rem;
 }
 
-.price-current {
-  font-size: 2rem;
-  font-weight: 700;
+.product-detail .price-current {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--dark);
 }
 

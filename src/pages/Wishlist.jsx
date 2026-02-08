@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useStore } from '../context/StoreContext';
+import { getProductById } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import './Wishlist.css';
 
@@ -32,9 +33,10 @@ const Wishlist = () => {
           <p className="page-subtitle">{wishlist.length} items saved</p>
 
           <div className="product-grid">
-            {wishlist.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {wishlist.map((item) => {
+              const product = getProductById(item.id) || item;
+              return <ProductCard key={product.id} product={product} />;
+            })}
           </div>
         </motion.div>
       </div>
