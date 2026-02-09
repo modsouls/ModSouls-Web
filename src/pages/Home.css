@@ -281,12 +281,14 @@
   }
 
   .hero-swiper {
-    height: clamp(220px, 50vh, 420px);
+    height: clamp(220px, 46vw, 420px);
   }
 
   .hero-slide img {
-    object-position: center top;
-    transform: scale(1.01);
+    object-fit: contain;
+    object-position: center;
+    transform: none;
+    background: #f8f4ed;
   }
 
   .section {
@@ -331,11 +333,13 @@
 
 @media (max-width: 480px) {
   .hero-swiper {
-    height: clamp(200px, 46vh, 360px);
+    height: clamp(200px, 56vw, 360px);
   }
 
   .hero-slide img {
+    object-fit: contain;
     object-position: center;
-    transform: scale(1.005);
+    transform: none;
+    background: #f8f4ed;
   }
 }
