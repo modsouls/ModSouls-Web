@@ -7,15 +7,10 @@ import ProductCard from '../components/ProductCard';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ImageZoom from '../components/ImageZoom';
-import toast from 'react-hot-toast';
+import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import './ProductDetail.css';
 
-const shareToast = (message) => toast.success((t) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
-    <span>{message}</span>
-    <button onClick={() => toast.dismiss(t.id)} style={{ marginLeft: 'auto', background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', padding: '0 4px', color: '#666' }}>×</button>
-  </div>
-), { duration: 3000 });
+const shareToast = (message) => toastWithDismiss(message, { duration: 3000 });
 
 const ProductDetail = () => {
   const { id } = useParams();

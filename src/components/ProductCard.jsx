@@ -13,7 +13,7 @@ const ProductCard = memo(({ product }) => {
 
   return (
     <motion.div className="product-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
-      <div className="product-image-wrapper" onMouseEnter={() => product.images.length > 1 && setHoveredImage(1)} onMouseLeave={() => setHoveredImage(0)}>
+      <div className="product-image-wrapper" onMouseEnter={() => product.images?.length > 1 && setHoveredImage(1)} onMouseLeave={() => setHoveredImage(0)}>
         <Link to={`/product/${product.id}`}>
           <ProgressiveImage src={getImageSrc(product.images?.[hoveredImage] || product.images?.[0])} alt={product.name} className="product-image" />
         </Link>

@@ -3,6 +3,11 @@
  * Add new products for any folder in public/images/Hoodie or public/images/Oversized Tshirts
  * that doesn't already have a product. Safe to run multiple times; only adds missing folders.
  * Does not remove or modify existing products.
+ *
+ * Behavior:
+ * - If a new folder is found, images are renamed to FolderName_1.ext ... FolderName_n.ext
+ * - If product.json exists inside the folder, its fields override defaults:
+ *   { name, tag, featured, price, mrp, sizes, series }
  */
 
 const fs = require('fs');
@@ -43,6 +48,31 @@ function collectImages(dir, basePath, files = []) {
   return files;
 }
 
+function renameImagesInFolder(folderPath, folderName) {
+  const entries = fs.readdirSync(folderPath, { withFileTypes: true });
+  const images = entries.filter((e) => e.isFile() && IMAGE_EXT.test(e.name));
+  images.sort((a, b) => a.name.localeCompare(b.name));
+  images.forEach((img, index) => {
+    const ext = path.extname(img.name);
+    const newName = `${folderName}_${index + 1}${ext}`;
+    if (img.name !== newName) {
+      fs.renameSync(path.join(folderPath, img.name), path.join(folderPath, newName));
+    }
+  });
+}
+
+function readProductJson(folderPath) {
+  const jsonPath = path.join(folderPath, 'product.json');
+  if (!fs.existsSync(jsonPath)) return null;
+  try {
+    const raw = fs.readFileSync(jsonPath, 'utf8');
+    return JSON.parse(raw);
+  } catch (e) {
+    console.warn('  Skipping invalid product.json:', jsonPath, e.message);
+    return null;
+  }
+}
+
 function folderToSlug(folderName) {
   return folderName
     .toLowerCase()
@@ -54,20 +84,25 @@ function formatProduct(p, type) {
   const slug = folderToSlug(p.folderName);
   const id = type === 'hoodie' ? `hoodie-${slug}` : `tee-${slug}`;
   const imagesStr = p.images.map((i) => `      "${i}"`).join(',\n');
+  const featured = p.featured ? `,\n    featured: true` : '';
+  const sizes = p.sizes && p.sizes.length ? `    sizes: ${JSON.stringify(p.sizes)},\n` : '    sizes: SIZES,\n';
+  const series = p.series || SERIES[type];
+  const price = Number.isFinite(p.price) ? p.price : PRICING[type].price;
+  const mrp = Number.isFinite(p.mrp) ? p.mrp : PRICING[type].mrp;
+  const displayName = (p.name || p.folderName).replace(/"/g, '\\"');
   return `  {
     id: "${id}",
     type: "${type}",
-    name: "${p.folderName.replace(/"/g, '\\"')}",
+    name: "${displayName}",
     slug: "${slug}",
     tag: "${(p.tag || p.folderName).replace(/"/g, '\\"')}",
-    series: "${SERIES[type]}",
+    series: "${series}",
     images: [
 ${imagesStr}
     ],
-    mrp: ${PRICING[type].mrp},
-    price: ${PRICING[type].price},
-    sizes: SIZES,
-    category: "${type}"
+    mrp: ${mrp},
+    price: ${price},
+${sizes}    category: "${type}"${featured}
   }`;
 }
 
@@ -93,6 +128,8 @@ function main() {
       const folderKey = `${category}/${f.name}`;
       if (existing.has(folderKey)) continue;
       const folderPath = path.join(dir, f.name);
+      renameImagesInFolder(folderPath, f.name);
+      const meta = readProductJson(folderPath) || {};
       const images = collectImages(folderPath, folderKey);
       if (images.length === 0) {
         console.warn('  Skipping (no images):', folderKey);
@@ -103,7 +140,13 @@ function main() {
         folderKey,
         type,
         images,
-        tag: f.name,
+        tag: meta.tag || f.name,
+        name: meta.name,
+        featured: meta.featured === true,
+        price: meta.price,
+        mrp: meta.mrp,
+        sizes: meta.sizes,
+        series: meta.series,
       });
       existing.add(folderKey);
     }

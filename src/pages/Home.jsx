@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -12,9 +13,14 @@ import 'swiper/css/effect-fade';
 import './Home.css';
 
 const Home = () => {
-  const featured = products.filter(p => p.featured).slice(0, 4);
-  const tees = products.filter(p => p.type === 'tee').slice(0, 4);
-  const hoodies = products.filter(p => p.type === 'hoodie').slice(0, 4);
+  const featured = useMemo(() => products.filter(p => p.featured).slice(0, 4), []);
+  const tees = useMemo(() => products.filter(p => p.type === 'tee').slice(0, 4), []);
+  const hoodies = useMemo(() => products.filter(p => p.type === 'hoodie').slice(0, 4), []);
+
+  const prefersReducedMotion = useMemo(
+    () => (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false),
+    []
+  );
 
   const heroBanners = [
     '/images/Banners/ModSouls Banner 1 (1).png',
@@ -33,8 +39,8 @@ const Home = () => {
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          effect="fade"
+          autoplay={prefersReducedMotion ? false : { delay: 5000, disableOnInteraction: false }}
+          effect={prefersReducedMotion ? 'slide' : 'fade'}
           loop
           className="hero-swiper"
         >
@@ -45,7 +51,7 @@ const Home = () => {
                   src={banner} 
                   alt={`ModSouls Banner ${index + 1}`}
                   loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchpriority={index === 0 ? 'high' : 'auto'}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
                 />
               </div>
             </SwiperSlide>

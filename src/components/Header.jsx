@@ -134,8 +134,9 @@ const Header = () => {
                     )}
                   </div>
                   {searchResults.map(product => (
-                    <div 
-                      key={product.id} 
+                    <button
+                      key={product.id}
+                      type="button"
                       className="search-result-item"
                       onClick={() => handleResultClick(product.id)}
                     >
@@ -148,7 +149,7 @@ const Header = () => {
                         </p>
                       </div>
                       <span className="result-price">₹{product.price}</span>
-                    </div>
+                    </button>
                   ))}
                 </motion.div>
               )}

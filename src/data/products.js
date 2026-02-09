@@ -70,9 +70,9 @@ export const products = [
     tag: "Jujutsu Kaisen",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Sukuna/post/s21.png",
-      "/images/Oversized Tshirts/Sukuna/post/s22.png",
-      "/images/Oversized Tshirts/Sukuna/post/s23.png",
+      "/images/Oversized Tshirts/Sukuna/Sukuna_1.jpg",
+      "/images/Oversized Tshirts/Sukuna/Sukuna_2.jpg",
+      "/images/Oversized Tshirts/Sukuna/Sukuna_3.jpg",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -88,10 +88,10 @@ export const products = [
     tag: "dhurandar",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Dhurandar/q1.png",
-      "/images/Oversized Tshirts/Dhurandar/q2.png",
-      "/images/Oversized Tshirts/Dhurandar/q3.png",
-      "/images/Oversized Tshirts/Dhurandar/q4.png",
+      "/images/Oversized Tshirts/Dhurandar/Dhurandar_1.jpeg",
+      "/images/Oversized Tshirts/Dhurandar/Dhurandar_2.jpeg",
+      "/images/Oversized Tshirts/Dhurandar/Dhurandar_3.png",
+      "/images/Oversized Tshirts/Dhurandar/Dhurandar_4.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -106,9 +106,9 @@ export const products = [
     tag: "Harry Potter",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Harry Potter/WhatsApp Image 2025-12-20 at 20.15.43.jpeg",
-      "/images/Oversized Tshirts/Harry Potter/_ (1).jpeg",
-      "/images/Oversized Tshirts/Harry Potter/Screenshot 2025-12-20 at 9.49.26 PM.png",
+      "/images/Oversized Tshirts/Harry Potter/Harry Potter_1.png",
+      "/images/Oversized Tshirts/Harry Potter/Harry Potter_2.png",
+      "/images/Oversized Tshirts/Harry Potter/Harry Potter_3.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -124,9 +124,9 @@ export const products = [
     tag: "TMKOC",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Jethalal Kite/jj1 (1).png",
-      "/images/Oversized Tshirts/Jethalal Kite/jj2 (1).png",
-      "/images/Oversized Tshirts/Jethalal Kite/jj3 (1).png",
+      "/images/Oversized Tshirts/Jethalal Kite/Jethalal Kite_1.png",
+      "/images/Oversized Tshirts/Jethalal Kite/Jethalal Kite_2.png",
+      "/images/Oversized Tshirts/Jethalal Kite/Jethalal Kite_3.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -141,9 +141,9 @@ export const products = [
     tag: "Naruto",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Sasuke And Kakashi/ss1.png",
-      "/images/Oversized Tshirts/Sasuke And Kakashi/ss2.png",
-      "/images/Oversized Tshirts/Sasuke And Kakashi/ss3.png",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/Sasuke And Kakashi_1.jpeg",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/Sasuke And Kakashi_2.jpeg",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/Sasuke And Kakashi_3.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -159,9 +159,9 @@ export const products = [
     tag: "Harry Potter",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Slytherin/ss1.png",
-      "/images/Oversized Tshirts/Slytherin/ss2.png",
-      "/images/Oversized Tshirts/Slytherin/ss3.png",
+      "/images/Oversized Tshirts/Slytherin/Slytherin_1.jpeg",
+      "/images/Oversized Tshirts/Slytherin/Slytherin_2.png",
+      "/images/Oversized Tshirts/Slytherin/Slytherin_3.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -177,10 +177,10 @@ export const products = [
     tag: "Solo Leveling",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Solo Leveling/za (1).png",
-      "/images/Oversized Tshirts/Solo Leveling/zb (1).png",
-      "/images/Oversized Tshirts/Solo Leveling/zc (1).png",
-      "/images/Oversized Tshirts/Solo Leveling/ww11.png",
+      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_1.jpeg",
+      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_2.jpeg",
+      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_3.png",
+      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_4.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -196,9 +196,9 @@ export const products = [
     tag: "Marvel",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Spiderman/spd1 (1).png",
-      "/images/Oversized Tshirts/Spiderman/spd2 (1).png",
-      "/images/Oversized Tshirts/Spiderman/spd3 (1).png",
+      "/images/Oversized Tshirts/Spiderman/Spiderman_1.jpeg",
+      "/images/Oversized Tshirts/Spiderman/Spiderman_2.jpeg",
+      "/images/Oversized Tshirts/Spiderman/Spiderman_3.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -214,9 +214,9 @@ export const products = [
     tag: "One Piece",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Zoro/s33.png",
-      "/images/Oversized Tshirts/Zoro/ss31.png",
-      "/images/Oversized Tshirts/Zoro/sss32.png",
+      "/images/Oversized Tshirts/Zoro/Zoro_1.jpeg",
+      "/images/Oversized Tshirts/Zoro/Zoro_2.jpeg",
+      "/images/Oversized Tshirts/Zoro/Zoro_3.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -232,10 +232,10 @@ export const products = [
     tag: "Quotes",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Overthink-Quote/ss21.png",
-      "/images/Oversized Tshirts/Overthink-Quote/ss22.png",
-      "/images/Oversized Tshirts/Overthink-Quote/ChatGPT Image Dec 29, 2025, 11_14_34 PM.png",
-      "/images/Oversized Tshirts/Overthink-Quote/ChatGPT Image Dec 29, 2025, 11_16_13 PM (1).png",
+      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_1.png",
+      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_2.png",
+      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_3.png",
+      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_4.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -250,11 +250,11 @@ export const products = [
     tag: "Shiva",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/Shiva/sv1.jpeg",
-      "/images/Oversized Tshirts/Shiva/sv2.jpeg",
-      "/images/Oversized Tshirts/Shiva/sv3.jpeg",
-      "/images/Oversized Tshirts/Shiva/sv4.jpeg",
-      "/images/Oversized Tshirts/Shiva/sv5.png",
+      "/images/Oversized Tshirts/Shiva/Shiva_1.jpeg",
+      "/images/Oversized Tshirts/Shiva/Shiva_2.jpeg",
+      "/images/Oversized Tshirts/Shiva/Shiva_3.jpeg",
+      "/images/Oversized Tshirts/Shiva/Shiva_4.jpeg",
+      "/images/Oversized Tshirts/Shiva/Shiva_5.jpeg",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -269,10 +269,10 @@ export const products = [
     tag: "The Family Man",
     series: "On The Go Series",
     images: [
-      "/images/Oversized Tshirts/The Family Man/Screenshot 2025-12-13 at 11.49.03 PM (1).png",
-      "/images/Oversized Tshirts/The Family Man/Screenshot 2025-12-13 at 11.49.23 PM.png",
-      "/images/Oversized Tshirts/The Family Man/Screenshot 2025-12-14 at 2.28.46 PM.png",
-      "/images/Oversized Tshirts/The Family Man/Screenshot 2025-12-14 at 2.41.15 PM.png",
+      "/images/Oversized Tshirts/The Family Man/The Family Man_1.png",
+      "/images/Oversized Tshirts/The Family Man/The Family Man_2.png",
+      "/images/Oversized Tshirts/The Family Man/The Family Man_3.png",
+      "/images/Oversized Tshirts/The Family Man/The Family Man_4.png",
     ],
     mrp: PRICING.tee.mrp,
     price: PRICING.tee.price,
@@ -280,6 +280,8 @@ export const products = [
     category: "tee"
   },
 ];
+
+const productById = new Map(products.map((p) => [p.id, p]));
 
 export const brandInfo = {
   name: "Mod Souls",
@@ -295,7 +297,7 @@ export const brandInfo = {
 export const formatINR = (amount) => `₹${amount.toLocaleString('en-IN')}`;
 
 /** Get product by id (for cart/wishlist display so images always match current paths). */
-export const getProductById = (id) => products.find((p) => p.id === id);
+export const getProductById = (id) => productById.get(id);
 
 /** Use for img src so paths with spaces/special chars load correctly. */
 export const getImageSrc = (path) => (path && typeof path === 'string' ? encodeURI(path) : path || '');

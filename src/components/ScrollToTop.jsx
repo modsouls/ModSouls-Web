@@ -1,25 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ScrollToTop.css';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const rafRef = useRef(null);
-  const tickingRef = useRef(false);
-
   useEffect(() => {
     const onScroll = () => {
-      if (tickingRef.current) return;
-      tickingRef.current = true;
-      rafRef.current = requestAnimationFrame(() => {
-        setIsVisible(window.pageYOffset > 300);
-        tickingRef.current = false;
-      });
+      setIsVisible(window.pageYOffset > 300);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     return () => {
       window.removeEventListener('scroll', onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 

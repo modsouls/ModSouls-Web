@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import toast from 'react-hot-toast';
+import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import { brandInfo } from '../data/products';
+import { useFormState } from '../utils/useFormState';
 import './Contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const { formData, handleChange } = useFormState({
     name: '',
     email: '',
     subject: '',
@@ -33,28 +34,7 @@ const Contact = () => {
     e.preventDefault();
     
     if (!validateForm()) {
-      toast.error(
-        (t) => (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
-            <span>Please fix the errors in the form</span>
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              style={{
-                marginLeft: 'auto',
-                background: 'none',
-                border: 'none',
-                fontSize: '20px',
-                cursor: 'pointer',
-                padding: '0 4px',
-                color: '#666'
-              }}
-            >
-              ×
-            </button>
-          </div>
-        ),
-        { duration: 4000 }
-      );
+      toastWithDismiss('Please fix the errors in the form', { type: 'error' });
       return;
     }
     
@@ -63,34 +43,11 @@ const Contact = () => {
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
     window.location.href = `mailto:${brandInfo.email}?subject=${subject}&body=${body}`;
-    toast.success(
-      (t) => (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
-          <span>Opening your email client...</span>
-          <button
-            onClick={() => toast.dismiss(t.id)}
-            style={{
-              marginLeft: 'auto',
-              background: 'none',
-              border: 'none',
-              fontSize: '20px',
-              cursor: 'pointer',
-              padding: '0 4px',
-              color: '#666'
-            }}
-          >
-            ×
-          </button>
-        </div>
-      ),
-      { duration: 4000 }
-    );
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setErrors({});
+    toastWithDismiss('Opening your email client...');
   };
 
-  const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleFieldChange = (e) => {
+    handleChange(e);
     if (errors[e.target.name]) {
       setErrors(prev => ({ ...prev, [e.target.name]: '' }));
     }
@@ -167,12 +124,13 @@ const Contact = () => {
               <h2>Send us a Message</h2>
               <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
-                  <label>Name *</label>
+                  <label htmlFor="contact-name">Name *</label>
                   <input
                     type="text"
                     name="name"
+                    id="contact-name"
                     value={formData.name}
-                    onChange={handleChange}
+                    onChange={handleFieldChange}
                     placeholder="Your name"
                     className={errors.name ? 'error' : ''}
                   />
@@ -180,12 +138,13 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Email *</label>
+                  <label htmlFor="contact-email">Email *</label>
                   <input
                     type="email"
                     name="email"
+                    id="contact-email"
                     value={formData.email}
-                    onChange={handleChange}
+                    onChange={handleFieldChange}
                     placeholder="your.email@example.com"
                     className={errors.email ? 'error' : ''}
                   />
@@ -193,12 +152,13 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Subject *</label>
+                  <label htmlFor="contact-subject">Subject *</label>
                   <input
                     type="text"
                     name="subject"
+                    id="contact-subject"
                     value={formData.subject}
-                    onChange={handleChange}
+                    onChange={handleFieldChange}
                     placeholder="What is this about?"
                     className={errors.subject ? 'error' : ''}
                   />
@@ -206,11 +166,12 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Message *</label>
+                  <label htmlFor="contact-message">Message *</label>
                   <textarea
                     name="message"
+                    id="contact-message"
                     value={formData.message}
-                    onChange={handleChange}
+                    onChange={handleFieldChange}
                     rows="6"
                     placeholder="Tell us more..."
                     className={errors.message ? 'error' : ''}

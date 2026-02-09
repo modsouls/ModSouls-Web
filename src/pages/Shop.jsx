@@ -37,25 +37,16 @@ const Shop = () => {
     return () => clearTimeout(t);
   }, [filter, seriesFilter, searchTerm, setSearchParams]);
 
-  const updateParams = (updates) => {
-    setSearchParams(prev => {
-      const p = Object.fromEntries(prev);
-      Object.entries(updates).forEach(([k, v]) => (v ? (p[k] = v) : delete p[k]));
-      return p;
-    }, { replace: true });
-  };
-
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
-    updateParams({ filter: newFilter === 'all' ? null : newFilter, series: seriesFilter || null, search: searchTerm.trim() || null });
   };
 
   const filteredProducts = useMemo(() => filterProducts({ filter, seriesFilter, categoryFilter, searchTerm }), [filter, seriesFilter, categoryFilter, searchTerm]);
 
   const closeFilters = () => setShowFilters(false);
-  const setSeries = (v) => { setSeriesFilter(v); updateParams({ filter: filter === 'all' ? null : filter, series: v || null, search: searchTerm.trim() || null }); };
+  const setSeries = (v) => { setSeriesFilter(v); };
   const toggleCategory = (cat) => setCategoryFilter(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]);
-  const clearFilters = () => { setSeriesFilter(''); setCategoryFilter([]); updateParams({ filter: null, series: null, search: null }); };
+  const clearFilters = () => { setSeriesFilter(''); setCategoryFilter([]); };
 
   return (
     <div className="shop-page">

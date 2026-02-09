@@ -1,116 +1,60 @@
-# How to Add New Products
+# How To Add New Products
 
-## Quick Method (Automatic)
+This project includes a script that automatically:
+- Renames images in a new product folder to `FolderName_1.ext` ... `FolderName_n.ext`
+- Adds the product to `src/data/products.js`
 
-### Step 1: Create Product Folder
-Add a new folder in the appropriate directory:
-- **T-Shirts**: `public/images/Oversized Tshirts/[Product Name]/`
-- **Hoodies**: `public/images/Premium Hoodies/[Product Name]/`
+## 1. Add Your Images
 
-### Step 2: Add Images
-Place product images in the folder:
-- `image1.jpg` (main image)
-- `image2.jpg` (optional)
-- `image3.jpg` (optional)
-- Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`
+Place a new folder in one of these locations:
+- `public/images/Oversized Tshirts/<Folder Name>/`
+- `public/images/Hoodie/<Folder Name>/`
 
-### Step 3: Add product.json (Optional)
-Create `product.json` in the folder to customize:
+Put all images directly inside the folder (no nested subfolders).
+
+Example:
+```
+public/images/Oversized Tshirts/Sukuna/
+  Sukuna_sketch.png
+  Sukuna_back.png
+```
+
+## 2. (Recommended) Add product.json
+
+Create `product.json` inside the same folder to set correct metadata:
+
 ```json
 {
-  "name": "Custom Product Name",
+  "name": "Product Display Name",
   "tag": "Anime",
-  "featured": true,
+  "featured": false,
   "price": 599,
   "mrp": 699,
-  "stock": true,
-  "discount": 15
+  "sizes": ["XS", "S", "M", "L", "XL", "XXL", "XXXL"],
+  "series": "On The Go Series"
 }
 ```
 
-If no `product.json` exists, defaults are used and tag is auto-detected.
+Notes:
+- `tag` is used for search and category matching.
+- `series` should be `On The Go Series` (tees) or `On The Hood Series` (hoodies).
+- If you skip `product.json`, the folder name is used as `name` and `tag`.
 
-### Step 4: Validate & Generate
-Run the command:
+## 3. Run the Script
+
 ```bash
-npm run products
+node scripts/add-new-products.cjs
 ```
 
-Or separately:
+The script will:
+- Rename images to `FolderName_1.ext` etc.
+- Add any missing product entries to `src/data/products.js`
+
+## 4. Verify
+
+Run the app and check the Shop page:
 ```bash
-npm run validate-products  # Check for issues
-npm run generate-products  # Generate products.js
+npm run dev
 ```
 
----
-
-## Example Structure
-
-```
-public/images/
-├── Oversized Tshirts/
-│   ├── Naruto Uzumaki/
-│   │   ├── product.json
-│   │   ├── front.jpg
-│   │   ├── back.jpg
-│   │   └── detail.jpg
-│   └── Spiderman/
-│       ├── image1.jpg
-│       └── image2.jpg
-└── Premium Hoodies/
-    └── Sukuna JJK/
-        ├── product.json
-        └── main.jpg
-```
-
----
-
-## Default Values
-
-### T-Shirts
-- Price: ₹599
-- MRP: ₹699
-- Sizes: S, M, L, XL, XXL
-- Series: "On The Go Series"
-
-### Hoodies
-- Price: ₹1099
-- MRP: ₹1399
-- Sizes: S, M, L, XL, XXL
-- Series: "On The Hood Series"
-
----
-
-## Tips
-
-1. **Folder Name**: Use clear, descriptive names (becomes product ID)
-2. **Image Order**: Images are sorted alphabetically
-3. **Featured Products**: Set `"featured": true` in product.json
-4. **Auto-Tags**: Tags are auto-detected from product names (Anime, Marvel, etc.)
-5. **Validation**: Run `npm run validate-products` to check for issues
-6. **Stock Management**: Set `"stock": false` to mark as out of stock
-7. **Custom Pricing**: Override default prices in product.json
-
----
-
-## Advanced Features
-
-### Auto-Tag Detection
-Products are automatically tagged based on keywords:
-- **Anime**: naruto, sasuke, jjk, one piece, etc.
-- **Marvel**: spiderman, avengers, iron man
-- **Harry Potter**: potter, slytherin, hogwarts
-- **Movies**: tmkoc, family man
-- **Quotes**: akarshan, dhurandar
-
-### Validation Checks
-- Missing images
-- Invalid JSON
-- Naming issues
-- Minimum 2 images recommended
-
-### Bulk Operations
-```bash
-# Add 10 new products, then:
-npm run products  # Validates + Generates
-```
+If anything looks off, edit the product entry in `src/data/products.js` and rerun.

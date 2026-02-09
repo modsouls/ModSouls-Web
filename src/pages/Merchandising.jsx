@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useFormState } from '../utils/useFormState';
 import { motion } from 'framer-motion';
-import toast from 'react-hot-toast';
+import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import { brandInfo } from '../data/products';
 import './Merchandising.css';
 
 const Merchandising = () => {
-  const [formData, setFormData] = useState({
+  const { formData, handleChange } = useFormState({
     name: '',
     location: '',
     requirement: '',
@@ -24,22 +24,7 @@ const Merchandising = () => {
     
     window.location.href = `mailto:${brandInfo.email}?subject=${subject}&body=${body}`;
     
-    toast.success('Opening your email client...');
-    setFormData({
-      name: '',
-      location: '',
-      requirement: '',
-      quantity: '',
-      budget: '',
-      message: ''
-    });
-  };
-
-  const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    toastWithDismiss('Opening your email client...');
   };
 
   return (
@@ -196,10 +181,11 @@ const Merchandising = () => {
               
               <form onSubmit={handleSubmit} className="merch-form">
                 <div className="form-group">
-                  <label>Name *</label>
+                  <label htmlFor="merch-name">Name *</label>
                   <input
                     type="text"
                     name="name"
+                    id="merch-name"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -208,10 +194,11 @@ const Merchandising = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Location *</label>
+                  <label htmlFor="merch-location">Location *</label>
                   <input
                     type="text"
                     name="location"
+                    id="merch-location"
                     value={formData.location}
                     onChange={handleChange}
                     required
@@ -220,9 +207,10 @@ const Merchandising = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Requirement *</label>
+                  <label htmlFor="merch-requirement">Requirement *</label>
                   <select
                     name="requirement"
+                    id="merch-requirement"
                     value={formData.requirement}
                     onChange={handleChange}
                     required
@@ -236,10 +224,11 @@ const Merchandising = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Quantity *</label>
+                  <label htmlFor="merch-quantity">Quantity *</label>
                   <input
                     type="number"
                     name="quantity"
+                    id="merch-quantity"
                     value={formData.quantity}
                     onChange={handleChange}
                     required
@@ -249,10 +238,11 @@ const Merchandising = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Budget (INR) *</label>
+                  <label htmlFor="merch-budget">Budget (INR) *</label>
                   <input
                     type="text"
                     name="budget"
+                    id="merch-budget"
                     value={formData.budget}
                     onChange={handleChange}
                     required
@@ -261,9 +251,10 @@ const Merchandising = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Message</label>
+                  <label htmlFor="merch-message">Message</label>
                   <textarea
                     name="message"
+                    id="merch-message"
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"

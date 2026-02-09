@@ -3,20 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useStore } from '../context/StoreContext';
 import { formatINR, getProductById, getImageSrc } from '../data/products';
-import toast from 'react-hot-toast';
+import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import './Checkout.css';
-
-const toastWithDismiss = (message, duration = 5000) =>
-  toast.success((t) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
-      <span>{message}</span>
-      <button onClick={() => toast.dismiss(t.id)} style={{ marginLeft: 'auto', background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', padding: '0 4px', color: '#666' }}>×</button>
-    </div>
-  ), { duration });
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { cart, cartTotal, clearCart } = useStore();
+  const { cart, cartTotal } = useStore();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', address: '', city: '', state: '', pincode: '', notes: '' });
 
   useEffect(() => {
@@ -53,9 +45,7 @@ Total: ${formatINR(finalTotal)}
 ${formData.notes ? `Notes: ${formData.notes}` : ''}
     `.trim();
     window.location.href = `mailto:modsouls.in@gmail.com?subject=${encodeURIComponent('New Order - ModSouls')}&body=${encodeURIComponent(orderDetails)}`;
-    toastWithDismiss('Order placed! Check your email.');
-    clearCart();
-    setTimeout(() => navigate('/'), 2000);
+    toastWithDismiss('Order details prepared. Check your email client.', { duration: 5000 });
   };
 
   if (cart.length === 0) return null;
@@ -72,44 +62,45 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                   <h2>Contact Information</h2>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>Full Name *</label>
-                      <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" />
+                      <label htmlFor="checkout-name">Full Name *</label>
+                      <input id="checkout-name" type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" />
                     </div>
                     <div className="form-group">
-                      <label>Email *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" />
+                      <label htmlFor="checkout-email">Email *</label>
+                      <input id="checkout-email" type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="+91 98765 43210" />
+                    <label htmlFor="checkout-phone">Phone Number *</label>
+                    <input id="checkout-phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="+91 98765 43210" />
                   </div>
                 </div>
                 <div className="form-section">
                   <h2>Shipping Address</h2>
                   <div className="form-group">
-                    <label>Address *</label>
-                    <textarea name="address" value={formData.address} onChange={handleChange} required rows="3" placeholder="Street address, apartment, suite, etc." />
+                    <label htmlFor="checkout-address">Address *</label>
+                    <textarea id="checkout-address" name="address" value={formData.address} onChange={handleChange} required rows="3" placeholder="Street address, apartment, suite, etc." />
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>City *</label>
-                      <input type="text" name="city" value={formData.city} onChange={handleChange} required placeholder="Delhi" />
+                      <label htmlFor="checkout-city">City *</label>
+                      <input id="checkout-city" type="text" name="city" value={formData.city} onChange={handleChange} required placeholder="Delhi" />
                     </div>
                     <div className="form-group">
-                      <label>State *</label>
-                      <input type="text" name="state" value={formData.state} onChange={handleChange} required placeholder="Delhi" />
+                      <label htmlFor="checkout-state">State *</label>
+                      <input id="checkout-state" type="text" name="state" value={formData.state} onChange={handleChange} required placeholder="Delhi" />
                     </div>
                     <div className="form-group">
-                      <label>Pincode *</label>
-                      <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required placeholder="110001" />
+                      <label htmlFor="checkout-pincode">Pincode *</label>
+                      <input id="checkout-pincode" type="text" name="pincode" value={formData.pincode} onChange={handleChange} required placeholder="110001" />
                     </div>
                   </div>
                 </div>
                 <div className="form-section">
                   <h2>Additional Notes</h2>
                   <div className="form-group">
-                    <textarea name="notes" value={formData.notes} onChange={handleChange} rows="3" placeholder="Any special instructions for delivery..." />
+                    <label htmlFor="checkout-notes">Additional Notes</label>
+                    <textarea id="checkout-notes" name="notes" value={formData.notes} onChange={handleChange} rows="3" placeholder="Any special instructions for delivery..." />
                   </div>
                 </div>
                 <button type="submit" className="btn btn-primary btn-full">Place Order</button>

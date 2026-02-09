@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 import { StoreProvider } from './context/StoreContext';
@@ -25,17 +25,6 @@ const Contact = lazyLoad(() => import('./pages/Contact'));
 const SizeGuide = lazyLoad(() => import('./pages/SizeGuide'));
 const NotFound = lazyLoad(() => import('./pages/NotFound'));
 
-const pageVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 }
-};
-
-const pageTransition = {
-  duration: 0.4,
-  ease: [0.25, 0.46, 0.45, 0.94]
-};
-
 const routes = [
   { path: '/', component: Home },
   { path: '/shop', component: Shop },
@@ -52,6 +41,15 @@ const routes = [
 
 function AnimatedRoutes() {
   const location = useLocation();
+  const shouldReduceMotion = useReducedMotion();
+
+  const pageVariants = shouldReduceMotion
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }
+    : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -20 } };
+
+  const pageTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] };
 
   return (
     <AnimatePresence mode="wait">

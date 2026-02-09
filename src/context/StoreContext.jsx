@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
-import toast from 'react-hot-toast';
+import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 
 const StoreContext = createContext();
 
@@ -10,20 +10,13 @@ export const useStore = () => {
 };
 
 const getStoredData = (key) => {
-  const saved = localStorage.getItem(key);
-  return saved ? JSON.parse(saved) : [];
-};
-
-const toastWithDismiss = (message, duration = 4000) => {
-  toast.success(
-    (t) => (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
-        <span>{message}</span>
-        <button onClick={() => toast.dismiss(t.id)} style={{ marginLeft: 'auto', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', padding: '0 2px', color: '#666' }}>×</button>
-      </div>
-    ),
-    { duration }
-  );
+  if (typeof window === 'undefined') return [];
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
 };
 
 const triggerShake = (selector) => {
@@ -38,20 +31,28 @@ export const StoreProvider = ({ children }) => {
   const [cart, setCart] = useState(() => getStoredData('modsouls_cart'));
   const [wishlist, setWishlist] = useState(() => getStoredData('modsouls_wishlist'));
 
-  useEffect(() => { localStorage.setItem('modsouls_cart', JSON.stringify(cart)); }, [cart]);
-  useEffect(() => { localStorage.setItem('modsouls_wishlist', JSON.stringify(wishlist)); }, [wishlist]);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('modsouls_cart', JSON.stringify(cart));
+    }
+  }, [cart]);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('modsouls_wishlist', JSON.stringify(wishlist));
+    }
+  }, [wishlist]);
 
   const addToCart = useCallback((product, size, quantity = 1) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === product.id && item.size === size);
       triggerShake('.cart-link');
       if (existing) {
-        setTimeout(() => toastWithDismiss(`Updated ${product.name} quantity`), 0);
+        toastWithDismiss(`Updated ${product.name} quantity`);
         return prev.map(item =>
           item.id === product.id && item.size === size ? { ...item, quantity: item.quantity + quantity } : item
         );
       }
-      setTimeout(() => toastWithDismiss(`Added ${product.name} to cart`), 0);
+      toastWithDismiss(`Added ${product.name} to cart`);
       return [...prev, { ...product, size, quantity }];
     });
   }, []);
@@ -82,10 +83,10 @@ export const StoreProvider = ({ children }) => {
       const exists = prev.find(item => item.id === product.id);
       if (!exists) {
         triggerShake('.wishlist-link');
-        setTimeout(() => toastWithDismiss(`Added ${product.name} to wishlist`), 0);
+        toastWithDismiss(`Added ${product.name} to wishlist`);
         return [...prev, product];
       }
-      setTimeout(() => toastWithDismiss(`Removed ${product.name} from wishlist`), 0);
+      toastWithDismiss(`Removed ${product.name} from wishlist`);
       return prev.filter(item => item.id !== product.id);
     });
   }, []);
