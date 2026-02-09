@@ -58,3 +58,15 @@ npm run dev
 ```
 
 If anything looks off, edit the product entry in `src/data/products.js` and rerun.
+
+## Normalize Hoodie/Oversized Images (Optional)
+
+If you want to enforce the `FolderName_1.ext` naming convention across all hoodie and oversized t‑shirt images, run:
+
+```bash
+node scripts/normalize-product-images.cjs
+```
+
+This will:
+- Rename images in both folders
+- Update `src/data/products.js` paths automatically

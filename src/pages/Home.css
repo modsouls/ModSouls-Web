@@ -9,8 +9,8 @@
 }
 
 .hero-swiper {
-  height: 85vh;
-  min-height: 600px;
+  height: clamp(240px, 70vh, 720px);
+  min-height: unset;
 }
 
 .hero-slide {
@@ -23,8 +23,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.05);
-  transition: transform 8s ease-out;
+  object-position: center;
+  transform: scale(1.03);
+  transition: transform 8s ease-out, object-position 0.3s ease;
 }
 
 .hero-slide:hover img {
@@ -280,8 +281,12 @@
   }
 
   .hero-swiper {
-    height: 50vh;
-    min-height: 350px;
+    height: clamp(220px, 50vh, 420px);
+  }
+
+  .hero-slide img {
+    object-position: center top;
+    transform: scale(1.01);
   }
 
   .section {
@@ -321,5 +326,16 @@
 
   .merch-features-list li {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-swiper {
+    height: clamp(200px, 46vh, 360px);
+  }
+
+  .hero-slide img {
+    object-position: center;
+    transform: scale(1.005);
   }
 }
