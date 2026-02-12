@@ -2,7 +2,7 @@
 
 This project includes a script that automatically:
 - Renames images in a new product folder to `FolderName_1.ext` ... `FolderName_n.ext`
-- Adds the product to `src/data/products.js`
+- Adds the product to `src/data/products.json`
 
 ## 1. Add Your Images
 
@@ -48,7 +48,7 @@ node scripts/add-new-products.cjs
 
 The script will:
 - Rename images to `FolderName_1.ext` etc.
-- Add any missing product entries to `src/data/products.js`
+- Add any missing product entries to `src/data/products.json`
 
 ## 4. Verify
 
@@ -57,7 +57,7 @@ Run the app and check the Shop page:
 npm run dev
 ```
 
-If anything looks off, edit the product entry in `src/data/products.js` and rerun.
+If anything looks off, edit the product entry in `src/data/products.json` and rerun.
 
 ## Normalize Hoodie/Oversized Images (Optional)
 
@@ -69,4 +69,4 @@ node scripts/normalize-product-images.cjs
 
 This will:
 - Rename images in both folders
-- Update `src/data/products.js` paths automatically
+- Update `src/data/products.json` paths automatically

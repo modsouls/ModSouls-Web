@@ -15,7 +15,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const IMAGES_DIR = path.join(ROOT, 'public', 'images');
-const PRODUCTS_FILE = path.join(ROOT, 'src', 'data', 'products.js');
+const PRODUCTS_FILE = path.join(ROOT, 'src', 'data', 'products.json');
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 const PRICING = { tee: { mrp: 699, price: 599 }, hoodie: { mrp: 1399, price: 1099 } };
@@ -23,13 +23,15 @@ const SERIES = { tee: 'On The Go Series', hoodie: 'On The Hood Series' };
 
 const IMAGE_EXT = /\.(jpg|jpeg|png|webp)$/i;
 
-function getExistingFolderKeys(content) {
+function getExistingFolderKeys(products) {
   const keys = new Set();
-  const re = /\/images\/(Hoodie|Oversized Tshirts)\/([^/]+)\//g;
-  let m;
-  while ((m = re.exec(content)) !== null) {
-    keys.add(`${m[1]}/${m[2]}`);
-  }
+  products.forEach((p) => {
+    if (!Array.isArray(p.images)) return;
+    p.images.forEach((img) => {
+      const m = img.match(/\/images\/(Hoodie|Oversized Tshirts)\/([^/]+)\//);
+      if (m) keys.add(`${m[1]}/${m[2]}`);
+    });
+  });
   return keys;
 }
 
@@ -83,39 +85,37 @@ function folderToSlug(folderName) {
 function formatProduct(p, type) {
   const slug = folderToSlug(p.folderName);
   const id = type === 'hoodie' ? `hoodie-${slug}` : `tee-${slug}`;
-  const imagesStr = p.images.map((i) => `      "${i}"`).join(',\n');
-  const featured = p.featured ? `,\n    featured: true` : '';
-  const sizes = p.sizes && p.sizes.length ? `    sizes: ${JSON.stringify(p.sizes)},\n` : '    sizes: SIZES,\n';
   const series = p.series || SERIES[type];
   const price = Number.isFinite(p.price) ? p.price : PRICING[type].price;
   const mrp = Number.isFinite(p.mrp) ? p.mrp : PRICING[type].mrp;
-  const displayName = (p.name || p.folderName).replace(/"/g, '\\"');
-  return `  {
-    id: "${id}",
-    type: "${type}",
-    name: "${displayName}",
-    slug: "${slug}",
-    tag: "${(p.tag || p.folderName).replace(/"/g, '\\"')}",
-    series: "${series}",
-    images: [
-${imagesStr}
-    ],
-    mrp: ${mrp},
-    price: ${price},
-${sizes}    category: "${type}"${featured}
-  }`;
+  return {
+    id,
+    type,
+    name: p.name || p.folderName,
+    slug,
+    tag: p.tag || p.folderName,
+    series,
+    images: p.images,
+    mrp,
+    price,
+    sizes: p.sizes && p.sizes.length ? p.sizes : SIZES,
+    category: type,
+    ...(p.featured ? { featured: true } : {}),
+  };
 }
 
 function main() {
-  let content;
+  let products;
   try {
-    content = fs.readFileSync(PRODUCTS_FILE, 'utf8');
+    const raw = fs.readFileSync(PRODUCTS_FILE, 'utf8');
+    products = JSON.parse(raw);
+    if (!Array.isArray(products)) throw new Error('products.json must be an array');
   } catch (e) {
     console.error('Could not read', PRODUCTS_FILE, e.message);
     process.exit(1);
   }
 
-  const existing = getExistingFolderKeys(content);
+  const existing = getExistingFolderKeys(products);
 
   const toAdd = [];
 
@@ -157,18 +157,9 @@ function main() {
     return;
   }
 
-  const newBlocks = toAdd.map((p) => formatProduct(p, p.type));
-  const insert = ',\n' + newBlocks.join(',\n');
-
-  const marker = '];\n\nexport const brandInfo';
-  const idx = content.indexOf(marker);
-  if (idx === -1) {
-    console.error('Could not find products array end (]; before brandInfo) in', PRODUCTS_FILE);
-    process.exit(1);
-  }
-  const newContent = content.slice(0, idx) + insert + '\n' + content.slice(idx);
-
-  fs.writeFileSync(PRODUCTS_FILE, newContent, 'utf8');
+  const newItems = toAdd.map((p) => formatProduct(p, p.type));
+  const updated = products.concat(newItems);
+  fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(updated, null, 2), 'utf8');
   console.log('Added', toAdd.length, 'new product(s):');
   toAdd.forEach((p) => console.log('  -', p.folderKey));
   console.log('Run "npm run build" to verify.');

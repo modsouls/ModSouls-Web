@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 const SEO = ({ 
   title = 'ModSouls - Premium Oversized T-Shirts & Hoodies',
   description = 'Shop premium oversized t-shirts and hoodies featuring anime, movies, and pop culture designs. Ordinary is overrated, be a ModSoul.',
-  keywords = 'oversized t-shirts, premium hoodies, anime merchandise, custom apparel, ModSouls'
+  keywords = 'oversized t-shirts, premium hoodies, anime merchandise, custom apparel, ModSouls',
+  image = '/images/tranlogonew.png'
 }) => {
   useEffect(() => {
     document.title = title;
@@ -29,13 +30,20 @@ const SEO = ({
       element.setAttribute('content', content);
     };
 
+    const absoluteImage = typeof window !== 'undefined' && image.startsWith('/')
+      ? `${window.location.origin}${image}`
+      : image;
+
     updateMeta('description', description);
     updateMeta('keywords', keywords);
     updateProperty('og:title', title);
     updateProperty('og:description', description);
+    updateProperty('og:image', absoluteImage);
+    updateMeta('twitter:card', 'summary_large_image');
     updateMeta('twitter:title', title);
     updateMeta('twitter:description', description);
-  }, [title, description, keywords]);
+    updateMeta('twitter:image', absoluteImage);
+  }, [title, description, keywords, image]);
 
   return null;
 };

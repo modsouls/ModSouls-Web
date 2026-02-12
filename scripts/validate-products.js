@@ -7,7 +7,7 @@ function validateProducts() {
   const issues = [];
   let totalProducts = 0;
 
-  ['Oversized Tshirts', 'Premium Hoodies'].forEach(category => {
+  ['Oversized Tshirts', 'Hoodie'].forEach(category => {
     const dir = path.join(IMAGES_DIR, category);
     if (!fs.existsSync(dir)) return;
 

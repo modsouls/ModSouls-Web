@@ -10,7 +10,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const IMAGES_DIR = path.join(ROOT, 'public', 'images');
-const PRODUCTS_FILE = path.join(ROOT, 'src', 'data', 'products.js');
+const PRODUCTS_FILE = path.join(ROOT, 'src', 'data', 'products.json');
 
 const IMAGE_EXT = /\.(jpg|jpeg|png|webp)$/i;
 const CATEGORIES = ['Hoodie', 'Oversized Tshirts'];
@@ -61,15 +61,14 @@ function main() {
     return;
   }
 
-  let content = fs.readFileSync(PRODUCTS_FILE, 'utf8');
-  let updated = content;
-  for (const [oldPath, newPath] of Object.entries(mapping)) {
-    updated = updated.replaceAll(oldPath, newPath);
-  }
-
-  if (updated !== content) {
-    fs.writeFileSync(PRODUCTS_FILE, updated, 'utf8');
-  }
+  const raw = fs.readFileSync(PRODUCTS_FILE, 'utf8');
+  const products = JSON.parse(raw);
+  const updatedProducts = products.map((p) => {
+    if (!Array.isArray(p.images)) return p;
+    const images = p.images.map((img) => mapping[img] || img);
+    return { ...p, images };
+  });
+  fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(updatedProducts, null, 2), 'utf8');
 
   console.log(`Renamed ${Object.keys(mapping).length} image(s) and updated products.js`);
 }

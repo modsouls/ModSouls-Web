@@ -66,7 +66,9 @@ function AnimatedRoutes() {
                 exit="exit"
                 transition={pageTransition}
               >
-                <Component />
+                <ErrorBoundary>
+                  <Component />
+                </ErrorBoundary>
               </motion.div>
             }
           />

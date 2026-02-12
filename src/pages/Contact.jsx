@@ -39,17 +39,22 @@ const Contact = () => {
     }
     
     const message = `
-ModSouls Contact
-================
+MODSOULS CONTACT
+--------------------
+CUSTOMER
 Name: ${formData.name}
 Email: ${formData.email}
-Subject: ${formData.subject}
 
-Message:
+SUBJECT
+${formData.subject}
+
+MESSAGE
 ${formData.message}
     `.trim();
     const whatsappNumber = '918906915617';
-    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!popup) window.location.href = whatsappUrl;
     toastWithDismiss('Opening WhatsApp...');
   };
 
@@ -140,8 +145,10 @@ ${formData.message}
                     onChange={handleFieldChange}
                     placeholder="Your name"
                     className={errors.name ? 'error' : ''}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? 'contact-name-error' : undefined}
                   />
-                  {errors.name && <span className="error-message">{errors.name}</span>}
+                  {errors.name && <span id="contact-name-error" className="error-message">{errors.name}</span>}
                 </div>
 
                 <div className="form-group">
@@ -154,8 +161,10 @@ ${formData.message}
                     onChange={handleFieldChange}
                     placeholder="your.email@example.com"
                     className={errors.email ? 'error' : ''}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? 'contact-email-error' : undefined}
                   />
-                  {errors.email && <span className="error-message">{errors.email}</span>}
+                  {errors.email && <span id="contact-email-error" className="error-message">{errors.email}</span>}
                 </div>
 
                 <div className="form-group">
@@ -168,8 +177,10 @@ ${formData.message}
                     onChange={handleFieldChange}
                     placeholder="What is this about?"
                     className={errors.subject ? 'error' : ''}
+                    aria-invalid={!!errors.subject}
+                    aria-describedby={errors.subject ? 'contact-subject-error' : undefined}
                   />
-                  {errors.subject && <span className="error-message">{errors.subject}</span>}
+                  {errors.subject && <span id="contact-subject-error" className="error-message">{errors.subject}</span>}
                 </div>
 
                 <div className="form-group">
@@ -182,8 +193,10 @@ ${formData.message}
                     rows="6"
                     placeholder="Tell us more..."
                     className={errors.message ? 'error' : ''}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'contact-message-error' : undefined}
                   />
-                  {errors.message && <span className="error-message">{errors.message}</span>}
+                  {errors.message && <span id="contact-message-error" className="error-message">{errors.message}</span>}
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-full">

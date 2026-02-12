@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const IMAGES_DIR = path.join(__dirname, '../public/images');
-const OUTPUT_FILE = path.join(__dirname, '../src/data/products.js');
+const OUTPUT_FILE = path.join(__dirname, '../src/data/products.json');
 const TAGS_FILE = path.join(__dirname, '../src/data/tags.js');
 
 const CONFIG = {
@@ -34,7 +34,7 @@ function scanProductFolders() {
   const products = [];
   const allTags = new Set();
   
-  ['Oversized Tshirts', 'Premium Hoodies'].forEach(category => {
+  ['Oversized Tshirts', 'Hoodie'].forEach(category => {
     const dir = path.join(IMAGES_DIR, category);
     const type = category.includes('Tshirts') ? 'tee' : 'hoodie';
     
@@ -104,21 +104,7 @@ function createProduct(folderPath, folderName, type, category) {
 }
 
 function generateProductsFile(products) {
-  const content = `// Auto-generated - Run 'npm run generate-products' to update
-// Last updated: ${new Date().toISOString()}
-
-export const products = ${JSON.stringify(products, null, 2)};
-
-export const formatINR = (amount) => {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 0,
-  }).format(amount);
-};
-`;
-
-  fs.writeFileSync(OUTPUT_FILE, content, 'utf8');
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(products, null, 2), 'utf8');
 }
 
 function generateTagsFile(tags) {

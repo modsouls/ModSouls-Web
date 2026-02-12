@@ -27,6 +27,7 @@ const Home = () => {
     '/images/Banners/ModSouls Banner 2 (1).png',
     '/images/Banners/ModSouls Banner 3 (1).png',
   ];
+  const heroBannersMobile = heroBanners;
 
   return (
     <div className="home">
@@ -47,12 +48,15 @@ const Home = () => {
           {heroBanners.map((banner, index) => (
             <SwiperSlide key={index}>
               <div className="hero-slide">
-                <img 
-                  src={banner} 
-                  alt={`ModSouls Banner ${index + 1}`}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchPriority={index === 0 ? 'high' : 'auto'}
-                />
+                <picture>
+                  <source media="(max-width: 768px)" srcSet={heroBannersMobile[index] || banner} />
+                  <img 
+                    src={banner} 
+                    alt={`ModSouls Banner ${index + 1}`}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                  />
+                </picture>
               </div>
             </SwiperSlide>
           ))}

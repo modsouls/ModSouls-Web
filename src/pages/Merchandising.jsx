@@ -17,20 +17,25 @@ const Merchandising = () => {
     e.preventDefault();
     
     const message = `
-ModSouls Merchandising Enquiry
-==============================
+MODSOULS MERCH ENQUIRY
+-------------------------
+CONTACT
 Name: ${formData.name}
 Location: ${formData.location}
-Requirement: ${formData.requirement}
+
+REQUIREMENT
+Type: ${formData.requirement}
 Quantity: ${formData.quantity}
 Budget: ${formData.budget}
 
-Message:
+MESSAGE
 ${formData.message || '-'}
     `.trim();
 
     const whatsappNumber = '918906915617';
-    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!popup) window.location.href = whatsappUrl;
     toastWithDismiss('Opening WhatsApp...');
   };
 

@@ -1,15 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useStore } from '../context/StoreContext';
 import { formatINR, getProductById, getImageSrc } from '../data/products';
 import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
+import { useFormState } from '../utils/useFormState';
 import './Checkout.css';
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { cart, cartTotal } = useStore();
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', address: '', city: '', state: '', pincode: '', notes: '' });
+  const { formData, handleChange } = useFormState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    pincode: '',
+    notes: ''
+  });
 
   useEffect(() => {
     if (cart.length === 0) navigate('/cart');
@@ -18,38 +28,39 @@ const Checkout = () => {
   const shippingCost = cartTotal > 1000 ? 0 : 100;
   const finalTotal = cartTotal + shippingCost;
 
-  const handleChange = (e) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const origin = window.location.origin;
     const orderDetails = `
-ModSouls Order
-================
+MODSOULS ORDER
+--------------------
+CUSTOMER
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 
-Address:
+ADDRESS
 ${formData.address}
 ${formData.city}, ${formData.state} - ${formData.pincode}
 
-Items:
+ITEMS
 ${cart.map(item => {
   const p = getProductById(item.id) || item;
   const typeLabel = (p.type || item.type) === 'tee' ? 'T-Shirt' : 'Hoodie';
-  return `- ${p.name} (${typeLabel}) | Size: ${item.size} | Qty: ${item.quantity} | ${formatINR((p.price || item.price) * item.quantity)} | ${origin}/product/${item.id}`;
+  return `- ${p.name} (${typeLabel}) | Size: ${item.size} | Qty: ${item.quantity} | ${formatINR((p.price || item.price) * item.quantity)}\n  Link: ${origin}/product/${item.id}`;
 }).join('\n')}
 
+SUMMARY
 Subtotal: ${formatINR(cartTotal)}
 Shipping: ${shippingCost === 0 ? 'FREE' : formatINR(shippingCost)}
 Total: ${formatINR(finalTotal)}
-${formData.notes ? `\nNotes: ${formData.notes}` : ''}
+${formData.notes ? `\nNOTES\n${formData.notes}` : ''}
     `.trim();
 
     const whatsappNumber = '918906915617';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
-    window.location.href = whatsappUrl;
+    const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!popup) window.location.href = whatsappUrl;
     toastWithDismiss('Opening WhatsApp with your order details...', { duration: 5000 });
   };
 
