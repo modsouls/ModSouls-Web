@@ -3,33 +3,41 @@
 }
 
 .hero-section {
-  margin: 0 0 60px;
+  margin: 0 auto 60px;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
 
 .hero-swiper {
-  height: clamp(240px, 70vh, 720px);
+  height: auto;
   min-height: unset;
 }
 
 .hero-slide {
   width: 100%;
-  height: 100%;
+  height: auto;
   position: relative;
 }
 
 .hero-slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
   object-position: center;
-  transform: scale(1.03);
-  transition: transform 8s ease-out, object-position 0.3s ease;
+  transform: none;
+  transition: object-position 0.3s ease;
+  background: #f8f4ed;
 }
 
 .hero-slide:hover img {
-  transform: scale(1.1);
+  transform: none;
+}
+
+.hero-swiper .swiper-wrapper,
+.hero-swiper .swiper-slide {
+  height: auto;
 }
 
 .section {
@@ -281,7 +289,7 @@
   }
 
   .hero-swiper {
-    height: clamp(220px, 46vw, 420px);
+    height: auto;
   }
 
   .hero-slide img {
@@ -333,7 +341,7 @@
 
 @media (max-width: 480px) {
   .hero-swiper {
-    height: clamp(200px, 56vw, 360px);
+    height: auto;
   }
 
   .hero-slide img {
