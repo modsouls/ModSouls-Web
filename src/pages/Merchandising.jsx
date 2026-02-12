@@ -1,7 +1,6 @@
 import { useFormState } from '../utils/useFormState';
 import { motion } from 'framer-motion';
 import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
-import { brandInfo } from '../data/products';
 import './Merchandising.css';
 
 const Merchandising = () => {
@@ -17,14 +16,22 @@ const Merchandising = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const subject = encodeURIComponent(`Mod Souls Merch Enquiry — ${formData.name || 'New Lead'}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nLocation: ${formData.location}\nRequirement: ${formData.requirement}\nQuantity: ${formData.quantity}\nBudget: ${formData.budget}\n\nMessage:\n${formData.message}`
-    );
-    
-    window.location.href = `mailto:${brandInfo.email}?subject=${subject}&body=${body}`;
-    
-    toastWithDismiss('Opening your email client...');
+    const message = `
+ModSouls Merchandising Enquiry
+==============================
+Name: ${formData.name}
+Location: ${formData.location}
+Requirement: ${formData.requirement}
+Quantity: ${formData.quantity}
+Budget: ${formData.budget}
+
+Message:
+${formData.message || '-'}
+    `.trim();
+
+    const whatsappNumber = '918906915617';
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    toastWithDismiss('Opening WhatsApp...');
   };
 
   return (

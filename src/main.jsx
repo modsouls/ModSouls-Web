@@ -8,3 +8,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+// Safari/Chrome bfcache can restore stale app state; force reload when restored.
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) window.location.reload();
+});

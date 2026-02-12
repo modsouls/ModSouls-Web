@@ -22,30 +22,35 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const origin = window.location.origin;
     const orderDetails = `
-ORDER DETAILS
-=============
-
-Customer Information:
+ModSouls Order
+================
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 
-Shipping Address:
+Address:
 ${formData.address}
 ${formData.city}, ${formData.state} - ${formData.pincode}
 
-Order Items:
-${cart.map(item => { const p = getProductById(item.id) || item; return `- ${p.name} (${(p.type || item.type) === 'tee' ? 'T-Shirt' : 'Hoodie'}) - Size: ${item.size} - Qty: ${item.quantity} - ${formatINR((p.price || item.price) * item.quantity)}`; }).join('\n')}
+Items:
+${cart.map(item => {
+  const p = getProductById(item.id) || item;
+  const typeLabel = (p.type || item.type) === 'tee' ? 'T-Shirt' : 'Hoodie';
+  return `- ${p.name} (${typeLabel}) | Size: ${item.size} | Qty: ${item.quantity} | ${formatINR((p.price || item.price) * item.quantity)} | ${origin}/product/${item.id}`;
+}).join('\n')}
 
 Subtotal: ${formatINR(cartTotal)}
 Shipping: ${shippingCost === 0 ? 'FREE' : formatINR(shippingCost)}
 Total: ${formatINR(finalTotal)}
-
-${formData.notes ? `Notes: ${formData.notes}` : ''}
+${formData.notes ? `\nNotes: ${formData.notes}` : ''}
     `.trim();
-    window.location.href = `mailto:modsouls.in@gmail.com?subject=${encodeURIComponent('New Order - ModSouls')}&body=${encodeURIComponent(orderDetails)}`;
-    toastWithDismiss('Order details prepared. Check your email client.', { duration: 5000 });
+
+    const whatsappNumber = '918906915617';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
+    window.location.href = whatsappUrl;
+    toastWithDismiss('Opening WhatsApp with your order details...', { duration: 5000 });
   };
 
   if (cart.length === 0) return null;

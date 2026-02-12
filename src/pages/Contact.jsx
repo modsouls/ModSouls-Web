@@ -38,12 +38,19 @@ const Contact = () => {
       return;
     }
     
-    const subject = encodeURIComponent(formData.subject || 'Contact Enquiry');
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${brandInfo.email}?subject=${subject}&body=${body}`;
-    toastWithDismiss('Opening your email client...');
+    const message = `
+ModSouls Contact
+================
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+    `.trim();
+    const whatsappNumber = '918906915617';
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    toastWithDismiss('Opening WhatsApp...');
   };
 
   const handleFieldChange = (e) => {
