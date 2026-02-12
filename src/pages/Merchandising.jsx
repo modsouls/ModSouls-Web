@@ -32,7 +32,7 @@ MESSAGE
 ${formData.message || '-'}
     `.trim();
 
-    const whatsappNumber = '918906915617';
+    const whatsappNumber = '918918216431';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     if (!popup) window.location.href = whatsappUrl;
