@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { products, formatINR, getImageSrc } from '../data/products';
 import { useStore } from '../context/StoreContext';
@@ -14,6 +14,7 @@ const shareToast = (message) => toastWithDismiss(message, { duration: 3000 });
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = products.find(p => p.id === id);
   const { addToCart, toggleWishlist, isInWishlist } = useStore();
   const [selectedImage, setSelectedImage] = useState(0);
@@ -39,6 +40,11 @@ const ProductDetail = () => {
     } else {
       window.open(shareUrls[platform], '_blank', 'width=600,height=400');
     }
+  };
+
+  const handleBuyNow = () => {
+    addToCart(product, selectedSize, quantity);
+    navigate('/checkout');
   };
 
   if (!product) {
@@ -124,6 +130,7 @@ const ProductDetail = () => {
 
             <div className="product-actions">
               <button type="button" className="btn btn-primary" onClick={() => addToCart(product, selectedSize, quantity)}>Add to Cart</button>
+              <button type="button" className="btn btn-buy-now" onClick={handleBuyNow}>Buy Now</button>
               <button type="button" className={`btn btn-outline ${inWishlist ? 'active' : ''}`} onClick={() => toggleWishlist(product)}>{inWishlist ? 'In Wishlist' : 'Add to Wishlist'}</button>
               <Link to="/shop" className="btn btn-outline">Back to Shop</Link>
             </div>

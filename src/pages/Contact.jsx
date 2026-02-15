@@ -54,7 +54,10 @@ ${formData.message}
     const whatsappNumber = '918918216431';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    if (!popup) window.location.href = whatsappUrl;
+    if (!popup) {
+      toastWithDismiss('Popup blocked. Please allow popups to open WhatsApp.', { type: 'error', duration: 5000 });
+      return;
+    }
     toastWithDismiss('Opening WhatsApp...');
   };
 

@@ -7,6 +7,15 @@ import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import { useFormState } from '../utils/useFormState';
 import './Checkout.css';
 
+const indianStatesAndUTs = [
+  'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
+  'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
+  'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan',
+  'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
+  'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu',
+  'Delhi', 'Jammu and Kashmir', 'Ladakh', 'Lakshadweep', 'Puducherry'
+];
+
 const Checkout = () => {
   const navigate = useNavigate();
   const { cart, cartTotal } = useStore();
@@ -18,6 +27,8 @@ const Checkout = () => {
     city: '',
     state: '',
     pincode: '',
+    addressType: '',
+    contactPreference: '',
     notes: ''
   });
 
@@ -40,7 +51,7 @@ Email: ${formData.email}
 Phone: ${formData.phone}
 
 ADDRESS
-${formData.address}
+${formData.address}${formData.addressType ? ` (${formData.addressType})` : ''}
 ${formData.city}, ${formData.state} - ${formData.pincode}
 
 ITEMS
@@ -54,13 +65,17 @@ SUMMARY
 Subtotal: ${formatINR(cartTotal)}
 Shipping: ${shippingCost === 0 ? 'FREE' : formatINR(shippingCost)}
 Total: ${formatINR(finalTotal)}
+Contact Preference: ${formData.contactPreference}
 ${formData.notes ? `\nNOTES\n${formData.notes}` : ''}
     `.trim();
 
     const whatsappNumber = '918918216431';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
     const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    if (!popup) window.location.href = whatsappUrl;
+    if (!popup) {
+      toastWithDismiss('Popup blocked. Please allow popups to open WhatsApp.', { type: 'error', duration: 5000 });
+      return;
+    }
     toastWithDismiss('Opening WhatsApp with your order details...', { duration: 5000 });
   };
 
@@ -104,11 +119,39 @@ ${formData.notes ? `\nNOTES\n${formData.notes}` : ''}
                     </div>
                     <div className="form-group">
                       <label htmlFor="checkout-state">State *</label>
-                      <input id="checkout-state" type="text" name="state" value={formData.state} onChange={handleChange} required placeholder="Delhi" />
+                      <select id="checkout-state" name="state" value={formData.state} onChange={handleChange} required>
+                        <option value="">Select State/UT</option>
+                        {indianStatesAndUTs.map((state) => (
+                          <option key={state} value={state}>{state}</option>
+                        ))}
+                      </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="checkout-pincode">Pincode *</label>
                       <input id="checkout-pincode" type="text" name="pincode" value={formData.pincode} onChange={handleChange} required placeholder="110001" />
+                    </div>
+                  </div>
+                </div>
+                <div className="form-section">
+                  <h2>Delivery Preferences</h2>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="checkout-address-type">Address Type *</label>
+                      <select id="checkout-address-type" name="addressType" value={formData.addressType} onChange={handleChange} required>
+                        <option value="">Select Address Type</option>
+                        <option value="Home">Home</option>
+                        <option value="Work">Work</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="checkout-contact-preference">Preferred Contact *</label>
+                      <select id="checkout-contact-preference" name="contactPreference" value={formData.contactPreference} onChange={handleChange} required>
+                        <option value="">Select Preferred Contact</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                        <option value="Phone Call">Phone Call</option>
+                        <option value="Email">Email</option>
+                      </select>
                     </div>
                   </div>
                 </div>

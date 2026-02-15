@@ -8,8 +8,9 @@ const Merchandising = () => {
     name: '',
     location: '',
     requirement: '',
-    quantity: '',
-    budget: '',
+    quantityRange: '',
+    budgetRange: '',
+    timeline: '',
     message: ''
   });
 
@@ -25,8 +26,9 @@ Location: ${formData.location}
 
 REQUIREMENT
 Type: ${formData.requirement}
-Quantity: ${formData.quantity}
-Budget: ${formData.budget}
+Quantity Range: ${formData.quantityRange}
+Budget Range: ${formData.budgetRange}
+Timeline: ${formData.timeline}
 
 MESSAGE
 ${formData.message || '-'}
@@ -35,7 +37,10 @@ ${formData.message || '-'}
     const whatsappNumber = '918918216431';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     const popup = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    if (!popup) window.location.href = whatsappUrl;
+    if (!popup) {
+      toastWithDismiss('Popup blocked. Please allow popups to open WhatsApp.', { type: 'error', duration: 5000 });
+      return;
+    }
     toastWithDismiss('Opening WhatsApp...');
   };
 
@@ -236,30 +241,56 @@ ${formData.message || '-'}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="merch-quantity">Quantity *</label>
-                  <input
-                    type="number"
-                    name="quantity"
-                    id="merch-quantity"
-                    value={formData.quantity}
+                  <label htmlFor="merch-quantity-range">Quantity Range *</label>
+                  <select
+                    name="quantityRange"
+                    id="merch-quantity-range"
+                    value={formData.quantityRange}
                     onChange={handleChange}
                     required
-                    placeholder="Number of pieces"
-                    min="10"
-                  />
+                  >
+                    <option value="">Select quantity range</option>
+                    <option value="10-25">10-25 pieces</option>
+                    <option value="26-50">26-50 pieces</option>
+                    <option value="51-100">51-100 pieces</option>
+                    <option value="101-250">101-250 pieces</option>
+                    <option value="250+">250+ pieces</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="merch-budget">Budget (INR) *</label>
-                  <input
-                    type="text"
-                    name="budget"
-                    id="merch-budget"
-                    value={formData.budget}
+                  <label htmlFor="merch-budget-range">Budget Range (INR) *</label>
+                  <select
+                    name="budgetRange"
+                    id="merch-budget-range"
+                    value={formData.budgetRange}
                     onChange={handleChange}
                     required
-                    placeholder="Your budget range"
-                  />
+                  >
+                    <option value="">Select budget range</option>
+                    <option value="Under ₹10,000">Under ₹10,000</option>
+                    <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+                    <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+                    <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+                    <option value="Above ₹1,00,000">Above ₹1,00,000</option>
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="merch-timeline">Timeline *</label>
+                  <select
+                    name="timeline"
+                    id="merch-timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select timeline</option>
+                    <option value="Urgent (within 7 days)">Urgent (within 7 days)</option>
+                    <option value="2-3 weeks">2-3 weeks</option>
+                    <option value="1 month">1 month</option>
+                    <option value="Flexible">Flexible</option>
+                  </select>
                 </div>
 
                 <div className="form-group">

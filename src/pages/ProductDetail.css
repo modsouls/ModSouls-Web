@@ -278,6 +278,23 @@
   gap: 12px;
 }
 
+.btn-buy-now {
+  background: linear-gradient(120deg, #111 0%, #2d2d2d 45%, #8c907e 100%);
+  color: white;
+  border: 2px solid rgba(17, 17, 17, 0.35);
+  box-shadow: 0 10px 25px rgba(17, 17, 17, 0.25);
+}
+
+.btn-buy-now:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(17, 17, 17, 0.35);
+}
+
+.btn-buy-now:active {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 8px 18px rgba(17, 17, 17, 0.25);
+}
+
 .product-share {
   padding: 20px 0;
   margin-bottom: 20px;
