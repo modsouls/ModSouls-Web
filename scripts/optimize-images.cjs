@@ -12,6 +12,7 @@ const MAX_DIMENSION = 1400;
 const JPEG_QUALITY = '72';
 const SOURCE_GROUPS = ['Oversized Tshirts', 'Hoodies'];
 const TARGET_FORMATS = new Set(['.jpg', '.jpeg', '.png']);
+const publicRoot = path.join(ROOT, 'public');
 
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -59,11 +60,30 @@ function optimizeImage(sourcePath, outputPath) {
   );
 }
 
+function canUseSips() {
+  if (process.env.MODSOULS_DISABLE_SIPS === '1') {
+    return false;
+  }
+
+  try {
+    execFileSync('sips', ['--help'], { stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function main() {
   ensureDir(OPTIMIZED_ROOT);
   const manifest = {};
   let optimizedCount = 0;
   let reusedCount = 0;
+  let fallbackCount = 0;
+  const sipsAvailable = canUseSips();
+
+  if (!sipsAvailable) {
+    console.warn('Image optimization skipped: "sips" is unavailable. Reusing committed optimized assets when possible.');
+  }
 
   for (const group of SOURCE_GROUPS) {
     const groupDir = path.join(SOURCE_ROOT, group);
@@ -71,20 +91,26 @@ function main() {
 
     for (const sourcePath of walk(groupDir)) {
       const outputPath = toOptimizedOutput(sourcePath);
-      if (shouldRegenerate(sourcePath, outputPath)) {
+
+      if (sipsAvailable && shouldRegenerate(sourcePath, outputPath)) {
         optimizeImage(sourcePath, outputPath);
         optimizedCount += 1;
-      } else {
+      } else if (fs.existsSync(outputPath)) {
         reusedCount += 1;
+      } else {
+        fallbackCount += 1;
       }
 
-      manifest[buildPublicPath(sourcePath, path.join(ROOT, 'public'))] = buildPublicPath(outputPath, path.join(ROOT, 'public'));
+      const sourcePublicPath = buildPublicPath(sourcePath, publicRoot);
+      const optimizedPublicPath = buildPublicPath(outputPath, publicRoot);
+      manifest[sourcePublicPath] = fs.existsSync(outputPath) ? optimizedPublicPath : sourcePublicPath;
     }
   }
 
   fs.writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`);
   console.log(`Optimized images generated: ${optimizedCount}`);
   console.log(`Optimized images reused: ${reusedCount}`);
+  console.log(`Images using original source: ${fallbackCount}`);
   console.log(`Image manifest entries: ${Object.keys(manifest).length}`);
 }
 
