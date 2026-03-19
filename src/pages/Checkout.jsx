@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
+import ProgressiveImage from '../components/ProgressiveImage';
 import { useStore } from '../context/StoreContext';
 import { formatINR, getProductById, getImageSrc } from '../data/products';
 import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
@@ -83,6 +85,13 @@ ${formData.notes ? `\nNOTES\n${formData.notes}` : ''}
 
   return (
     <div className="checkout-page">
+      <SEO
+        title="Checkout | ModSouls"
+        description="Complete your ModSouls order by confirming your shipping details and preferred contact method."
+        noindex
+        includeDefaultSchemas={false}
+        includeBreadcrumbSchema={false}
+      />
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="page-title">Checkout</h1>
@@ -173,7 +182,12 @@ ${formData.notes ? `\nNOTES\n${formData.notes}` : ''}
                   const imgSrc = getImageSrc((product.images && product.images[0]) || '');
                   return (
                   <div key={`${item.id}-${item.size}`} className="summary-item">
-                    <img src={imgSrc} alt={product.name} />
+                    <ProgressiveImage
+                      src={imgSrc}
+                      alt={product.name}
+                      className="checkout-item-image"
+                      sizes="60px"
+                    />
                     <div className="item-info">
                       <h4>{product.name}</h4>
                       <p>Size: {item.size} • Qty: {item.quantity}</p>

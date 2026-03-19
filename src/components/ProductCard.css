@@ -58,6 +58,15 @@
   text-align: center;
 }
 
+.product-meta-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
 .product-tag {
   display: inline-block;
   font-size: 12px;
@@ -69,7 +78,19 @@
   border: 1px solid rgba(17, 17, 17, 0.08);
   padding: 6px 10px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
+}
+
+.product-category {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(140, 144, 126, 0.95);
+  background: rgba(140, 144, 126, 0.12);
+  border: 1px solid rgba(140, 144, 126, 0.2);
+  padding: 6px 10px;
+  border-radius: 999px;
 }
 
 .product-name {

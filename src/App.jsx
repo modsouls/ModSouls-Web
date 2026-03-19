@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ExitIntent from './components/ExitIntent';
+import InstallPrompt from './components/InstallPrompt';
 import MobileNav from './components/MobileNav';
 import { lazyLoad } from './utils/lazyLoad';
 import './App.css';
@@ -92,6 +93,7 @@ function App() {
             <MobileNav />
             <ScrollToTop />
             <ExitIntent />
+            <InstallPrompt />
             <SpeedInsights />
             <Analytics />
             <Toaster

@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import './About.css';
 
 const About = () => {
   return (
     <div className="about-page">
+      <SEO
+        title="About ModSouls | Streetwear Brand Story, Values and Collections"
+        description="Learn about ModSouls, our premium streetwear philosophy, the story behind our oversized T-shirts and hoodies, and the values that shape every collection."
+        keywords={['about ModSouls', 'streetwear brand India', 'premium oversized apparel', 'anime streetwear story']}
+      />
       <section className="about-hero">
         <div className="container">
           <motion.div
@@ -48,7 +54,7 @@ const About = () => {
           >
             <div className="series-card">
               <div className="series-image">
-                <img src="/images/Posters/On the Go Series.png" alt="On The Go Series" />
+                <img src="/images/Posters/On the Go Series.png" alt="On The Go Series collection poster by ModSouls" loading="lazy" />
               </div>
               <div className="series-content">
                 <h3>On The Go Series</h3>
@@ -76,7 +82,7 @@ const About = () => {
                 </p>
               </div>
               <div className="series-image">
-                <img src="/images/Posters/On the Hood Series.png" alt="On The Hood Series" />
+                <img src="/images/Posters/On the Hood Series.png" alt="On The Hood Series hoodie collection poster by ModSouls" loading="lazy" />
               </div>
             </div>
           </motion.div>

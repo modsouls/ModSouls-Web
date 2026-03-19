@@ -33,6 +33,7 @@ const ExitIntent = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleClose}
+          role="presentation"
         >
           <motion.div
             className="exit-intent-modal"
@@ -40,11 +41,14 @@ const ExitIntent = () => {
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.8, y: 50 }}
             onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="exit-intent-title"
           >
-            <button className="exit-close" onClick={handleClose}>×</button>
+            <button type="button" className="exit-close" onClick={handleClose} aria-label="Close offer popup">×</button>
             
             <div className="exit-content">
-              <h2>Wait! Don't Leave Yet! 🎁</h2>
+              <h2 id="exit-intent-title">Wait! Don't Leave Yet! 🎁</h2>
               <p>Get exclusive deals on premium apparel</p>
               
               <div className="exit-offers">

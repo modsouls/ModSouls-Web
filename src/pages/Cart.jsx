@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
+import ProgressiveImage from '../components/ProgressiveImage';
 import { useStore } from '../context/StoreContext';
 import { formatINR, getProductById, getImageSrc } from '../data/products';
 import './Cart.css';
@@ -9,8 +11,15 @@ const Cart = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useStore();
 
   if (cart.length === 0) {
-    return (
+      return (
       <div className="cart-page">
+        <SEO
+          title="Your Cart | ModSouls"
+          description="Review the ModSouls items in your cart before checkout."
+          noindex
+          includeDefaultSchemas={false}
+          includeBreadcrumbSchema={false}
+        />
         <div className="container">
           <div className="empty-cart">
             <h2>Your cart is empty</h2>
@@ -24,6 +33,13 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
+      <SEO
+        title="Shopping Cart | ModSouls"
+        description="Review your selected ModSouls products, quantities, and pricing before moving to checkout."
+        noindex
+        includeDefaultSchemas={false}
+        includeBreadcrumbSchema={false}
+      />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -48,7 +64,12 @@ const Cart = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                 >
-                  <img src={imgSrc} alt={product.name} className="item-image" />
+                  <ProgressiveImage
+                    src={imgSrc}
+                    alt={product.name}
+                    className="item-image"
+                    sizes="120px"
+                  />
                   <div className="item-details">
                     <span className="item-tag">{product.tag}</span>
                     <h3 className="item-name">{product.name}</h3>
@@ -57,17 +78,19 @@ const Cart = () => {
                     </p>
                   </div>
                   <div className="item-quantity">
-                    <button onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)}>-</button>
+                    <button type="button" onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)} aria-label={`Decrease quantity of ${product.name}`}>-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}>+</button>
+                    <button type="button" onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)} aria-label={`Increase quantity of ${product.name}`}>+</button>
                   </div>
                   <div className="item-price">
                     <span className="price-original">{formatINR(product.mrp || item.mrp)}</span>
                     <span className="price-current">{formatINR((product.price || item.price) * item.quantity)}</span>
                   </div>
                   <button
+                    type="button"
                     className="item-remove"
                     onClick={() => removeFromCart(item.id, item.size)}
+                    aria-label={`Remove ${product.name} from cart`}
                   >
                     ×
                   </button>

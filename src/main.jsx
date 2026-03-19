@@ -13,3 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 window.addEventListener('pageshow', (e) => {
   if (e.persisted) window.location.reload();
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}

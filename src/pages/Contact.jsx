@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import { brandInfo } from '../data/products';
 import { useFormState } from '../utils/useFormState';
@@ -70,6 +71,11 @@ ${formData.message}
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact ModSouls | Customer Support and Custom Merch Enquiries"
+        description="Contact ModSouls for order support, product questions, collaborations, and custom merchandising enquiries. Reach us by email or social media."
+        keywords={['contact ModSouls', 'customer support streetwear', 'custom merchandising enquiry', 'ModSouls email']}
+      />
       <section className="contact-hero">
         <div className="container">
           <motion.div

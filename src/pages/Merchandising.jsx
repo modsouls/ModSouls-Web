@@ -1,5 +1,6 @@
 import { useFormState } from '../utils/useFormState';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
 import './Merchandising.css';
 
@@ -46,6 +47,11 @@ ${formData.message || '-'}
 
   return (
     <div className="merchandising-page">
+      <SEO
+        title="Custom Merchandising | Bulk T-Shirts, Hoodies and Brand Merch by ModSouls"
+        description="Create premium custom merchandise with ModSouls. Get branded T-shirts, hoodies, event merch, team apparel, and bulk orders with fast turnaround across India."
+        keywords={['custom merchandising India', 'bulk hoodies India', 'bulk t-shirts India', 'brand merchandise', 'event apparel']}
+      />
       <section className="merch-hero">
         <div className="container">
           <motion.div
@@ -317,7 +323,7 @@ ${formData.message || '-'}
               viewport={{ once: true }}
               className="image-section"
             >
-              <img src="/images/Merchandising Poster.png" alt="Custom Merchandising" />
+              <img src="/images/Merchandising Poster.png" alt="Preview of ModSouls custom merchandising services" loading="lazy" />
             </motion.div>
           </div>
         </div>

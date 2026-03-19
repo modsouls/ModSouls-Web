@@ -47,10 +47,29 @@ const Shop = () => {
   const setSeries = (v) => { setSeriesFilter(v); };
   const toggleCategory = (cat) => setCategoryFilter(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]);
   const clearFilters = () => { setSeriesFilter(''); setCategoryFilter([]); };
+  const primaryKeyword = filter === 'hoodie'
+    ? 'hoodies India'
+    : filter === 'tee'
+      ? 'oversized t-shirts India'
+      : 'streetwear India';
+  const shopDescription = searchTerm
+    ? `Browse ${filteredProducts.length} ModSouls products matching "${searchTerm}" including oversized T-shirts, hoodies, and pop-culture streetwear.`
+    : seriesFilter
+      ? `Explore the ${seriesFilter} collection from ModSouls featuring premium oversized apparel and distinctive graphic designs.`
+      : 'Browse the ModSouls collection of oversized T-shirts, premium hoodies, anime-inspired apparel, and statement streetwear made for India.';
 
   return (
     <div className="shop-page">
-      <SEO title="Shop - Premium T-Shirts & Hoodies | ModSouls" description="Browse our collection of oversized t-shirts (₹599) and premium hoodies (₹1099). Anime, movies, and custom designs." />
+      <SEO
+        title={searchTerm ? `${searchTerm} Search Results | Shop ModSouls` : seriesFilter ? `${seriesFilter} | Shop ModSouls` : 'Shop Oversized T-Shirts & Hoodies | ModSouls'}
+        description={shopDescription}
+        keywords={[
+          'shop ModSouls',
+          primaryKeyword,
+          seriesFilter || 'anime streetwear',
+          searchTerm || 'graphic tees',
+        ]}
+      />
       <Breadcrumbs />
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="shop-header">

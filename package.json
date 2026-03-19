@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm run products && node scripts/generate-seo-files.mjs",
     "build": "vite build",
     "preview": "vite preview",
-    "generate-products": "node scripts/generate-products.js",
-    "validate-products": "node scripts/validate-products.js",
-    "products": "npm run validate-products && npm run generate-products",
+    "seo": "node scripts/generate-seo-files.mjs",
+    "process-assets": "node scripts/process-product-assets.cjs",
+    "generate-products": "node scripts/generate-products.cjs",
+    "validate-products": "node scripts/validate-products.cjs",
+    "products": "npm run process-assets && npm run generate-products",
     "add-new-products": "node scripts/add-new-products.cjs",
     "optimize-images": "node scripts/optimize-images.js"
   },

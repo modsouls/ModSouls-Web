@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ProgressiveImage from './ProgressiveImage';
 import './ImageZoom.css';
 
 const ImageZoom = ({ src, alt }) => {
@@ -7,11 +8,13 @@ const ImageZoom = ({ src, alt }) => {
 
   return (
     <>
-      <div 
+      <button
+        type="button"
         className="zoomable-image"
         onClick={() => setIsZoomed(true)}
+        aria-label={`Zoom ${alt}`}
       >
-        <img src={src} alt={alt} />
+        <ProgressiveImage src={src} alt={alt} priority sizes="(max-width: 1024px) 100vw, 50vw" />
         <div className="zoom-hint">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="8"/>
@@ -20,7 +23,7 @@ const ImageZoom = ({ src, alt }) => {
             <line x1="8" y1="11" x2="14" y2="11"/>
           </svg>
         </div>
-      </div>
+      </button>
 
       <AnimatePresence>
         {isZoomed && (

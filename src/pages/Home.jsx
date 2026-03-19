@@ -14,6 +14,12 @@ import './Home.css';
 
 const Home = () => {
   const featured = useMemo(() => products.filter(p => p.featured).slice(0, 4), []);
+  const newArrivals = useMemo(
+    () => [...products]
+      .sort((a, b) => new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime())
+      .slice(0, 4),
+    [],
+  );
   const tees = useMemo(() => products.filter(p => p.type === 'tee').slice(0, 4), []);
   const hoodies = useMemo(() => products.filter(p => p.type === 'hoodie').slice(0, 4), []);
 
@@ -34,8 +40,19 @@ const Home = () => {
       <SEO 
         title="ModSouls - Premium Oversized T-Shirts & Hoodies | Ordinary is Overrated"
         description="Shop premium oversized t-shirts and hoodies from ModSouls. Anime, movies, and custom merchandise. Free shipping above ₹1000. Delhi, India."
+        keywords={[
+          'ModSouls home',
+          'oversized t-shirts India',
+          'anime hoodies India',
+          'streetwear brand India',
+          'custom merch Delhi',
+        ]}
       />
       <section className="hero-section">
+        <div className="sr-only">
+          <h1>ModSouls premium oversized T-shirts, hoodies and custom merchandise</h1>
+          <p>Shop distinctive streetwear inspired by anime, movies and pop culture, with custom merchandising for brands and teams.</p>
+        </div>
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
           navigation
@@ -114,6 +131,25 @@ const Home = () => {
         </div>
       </section>
 
+      <section className="section new-arrivals-section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-header"
+          >
+            <h2 className="section-title">New Arrivals</h2>
+            <p className="section-subtitle">Fresh drops and the latest design additions, automatically surfaced from the catalog</p>
+          </motion.div>
+          <div className="product-grid">
+            {newArrivals.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section tshirts-section">
         <div className="container">
           <motion.div
@@ -181,7 +217,7 @@ const Home = () => {
                 <div className="series-image">
                   <img 
                     src="/images/Posters/On the Go Series.png" 
-                    alt="On The Go Series"
+                    alt="ModSouls On The Go Series poster"
                     loading="lazy"
                   />
                 </div>
@@ -195,7 +231,7 @@ const Home = () => {
                 <div className="series-image">
                   <img 
                     src="/images/Posters/On the Hood Series.png" 
-                    alt="On The Hood Series"
+                    alt="ModSouls On The Hood Series poster"
                     loading="lazy"
                   />
                 </div>
@@ -220,7 +256,7 @@ const Home = () => {
             <div className="merch-promo-image">
               <img 
                 src="/images/Merchandising Poster.png" 
-                alt="Custom Merchandising"
+                alt="Custom merchandising services poster by ModSouls"
                 loading="lazy"
               />
             </div>

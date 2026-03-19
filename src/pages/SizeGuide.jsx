@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './SizeGuide.css';
 
 const SizeGuide = () => {
@@ -7,6 +8,11 @@ const SizeGuide = () => {
 
   return (
     <div className="size-guide-page">
+      <SEO
+        title="Size Guide | ModSouls Oversized T-Shirt Measurements and Care"
+        description="Check the ModSouls size guide for oversized T-shirt measurements, fit help, and fabric care instructions to keep your apparel looking fresh."
+        keywords={['size guide oversized t-shirt', 'ModSouls measurements', 't-shirt care guide', 'oversized fit India']}
+      />
       <section className="guide-hero">
         <div className="container">
           <button onClick={() => navigate(-1)} className="back-button">
@@ -32,7 +38,7 @@ const SizeGuide = () => {
           >
             <h2>Oversized T-Shirts Size Chart</h2>
             <div className="chart-image">
-              <img src="/images/Posters/Size Chart Oversized Tshirts.png" alt="Size Chart" />
+              <img src="/images/Posters/Size Chart Oversized Tshirts.png" alt="ModSouls oversized T-shirt size chart" loading="lazy" />
             </div>
           </motion.div>
         </div>

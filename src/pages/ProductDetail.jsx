@@ -8,6 +8,7 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ImageZoom from '../components/ImageZoom';
 import { toastWithDismiss } from '../utils/toastWithDismiss.jsx';
+import { buildProductSchema } from '../utils/seo';
 import './ProductDetail.css';
 
 const shareToast = (message) => toastWithDismiss(message, { duration: 3000 });
@@ -50,6 +51,11 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="product-detail">
+        <SEO
+          title="Product Not Found | ModSouls"
+          description="The ModSouls product you requested is unavailable or may have moved. Explore the latest collection instead."
+          noindex
+        />
         <div className="container">
           <div className="not-found">
             <h2>Product not found</h2>
@@ -65,14 +71,30 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <SEO title={`${product.name} - ${typeLabel} | ModSouls`} description={`${product.name} - ${product.tag}. ${formatINR(product.price)} (was ${formatINR(product.mrp)}). Premium quality ${product.type === 'tee' ? 'oversized t-shirt' : 'hoodie'}.`} />
+      <SEO
+        title={`${product.name} | ${typeLabel} by ModSouls`}
+        description={`${product.name} - ${product.tag}. ${formatINR(product.price)} (was ${formatINR(product.mrp)}). Premium quality ${product.type === 'tee' ? 'oversized T-shirt' : 'hoodie'} from ModSouls with sizes ${product.sizes.join(', ')}.`}
+        keywords={[product.name, product.tag, product.series, product.type === 'tee' ? 'oversized t-shirt India' : 'premium hoodie India', 'ModSouls']}
+        image={getImageSrc(product.images[0])}
+        imageAlt={`${product.name} by ModSouls`}
+        type="product"
+        schema={buildProductSchema(product)}
+      />
       <Breadcrumbs />
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="product-layout">
           <div className="product-gallery">
             <div className="thumbnails">
               {product.images.map((img, index) => (
-                <img key={index} src={getImageSrc(img)} alt={`${product.name} ${index + 1}`} className={`thumbnail ${selectedImage === index ? 'active' : ''}`} onClick={() => setSelectedImage(index)} />
+                <button
+                  key={img}
+                  type="button"
+                  className={`thumbnail-button ${selectedImage === index ? 'active' : ''}`}
+                  onClick={() => setSelectedImage(index)}
+                  aria-label={`View ${product.name} image ${index + 1}`}
+                >
+                  <img src={getImageSrc(img)} alt={`${product.name} product view ${index + 1}`} className={`thumbnail ${selectedImage === index ? 'active' : ''}`} loading="lazy" />
+                </button>
               ))}
             </div>
             <div className="main-image">
@@ -101,18 +123,18 @@ const ProductDetail = () => {
             <div className="product-options">
               <div className="options-row">
                 <div className="option-group">
-                  <label>Size</label>
-                  <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)} className="size-dropdown">
+                  <label htmlFor="product-size">Size</label>
+                  <select id="product-size" value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)} className="size-dropdown">
                     {product.sizes.map(size => <option key={size} value={size}>{size}</option>)}
                   </select>
                   {product.type === 'tee' && <Link to="/size-guide" className="size-guide-link">📏 View Size Guide</Link>}
                 </div>
                 <div className="option-group">
-                  <label>Quantity</label>
+                  <label htmlFor="product-quantity">Quantity</label>
                   <div className="quantity-selector">
-                    <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
-                    <input type="number" value={quantity} onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))} min="1" max="99" />
-                    <button type="button" onClick={() => setQuantity(Math.min(99, quantity + 1))}>+</button>
+                    <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label={`Decrease quantity of ${product.name}`}>-</button>
+                    <input id="product-quantity" type="number" value={quantity} onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))} min="1" max="99" />
+                    <button type="button" onClick={() => setQuantity(Math.min(99, quantity + 1))} aria-label={`Increase quantity of ${product.name}`}>+</button>
                   </div>
                 </div>
               </div>

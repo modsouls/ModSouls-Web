@@ -183,6 +183,13 @@
   backdrop-filter: blur(10px);
 }
 
+.new-arrivals-section {
+  background:
+    radial-gradient(circle at top right, rgba(140, 144, 126, 0.12), transparent 32%),
+    rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(10px);
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

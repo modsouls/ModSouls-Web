@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { useStore } from '../context/StoreContext';
 import { getProductById } from '../data/products';
 import ProductCard from '../components/ProductCard';
@@ -9,8 +10,15 @@ const Wishlist = () => {
   const { wishlist } = useStore();
 
   if (wishlist.length === 0) {
-    return (
+      return (
       <div className="wishlist-page">
+        <SEO
+          title="Wishlist | ModSouls"
+          description="View your saved ModSouls products and come back when you're ready to shop."
+          noindex
+          includeDefaultSchemas={false}
+          includeBreadcrumbSchema={false}
+        />
         <div className="container">
           <div className="empty-wishlist">
             <h2>Your wishlist is empty</h2>
@@ -24,6 +32,13 @@ const Wishlist = () => {
 
   return (
     <div className="wishlist-page">
+      <SEO
+        title="My Wishlist | ModSouls"
+        description="Browse the ModSouls products you have saved for later."
+        noindex
+        includeDefaultSchemas={false}
+        includeBreadcrumbSchema={false}
+      />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useStore } from '../context/StoreContext';
 import { searchProducts } from '../utils/searchProducts';
 import { getImageSrc } from '../data/products';
+import ProgressiveImage from './ProgressiveImage';
 import './Header.css';
 
 const Header = () => {
@@ -100,11 +101,12 @@ const Header = () => {
                     <path d="m21 21-4.35-4.35"/>
                   </svg>
                   <input
-                    type="text"
+                    type="search"
                     placeholder="Search: Naruto, Anime, Hoodie, Harry Potter..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     autoFocus
+                    aria-label="Search products"
                   />
                   <button type="button" className="close-search" onClick={closeSearch}>×</button>
                 </div>
@@ -140,7 +142,12 @@ const Header = () => {
                       className="search-result-item"
                       onClick={() => handleResultClick(product.id)}
                     >
-                      <img src={getImageSrc(product.images?.[0])} alt={product.name} />
+                      <ProgressiveImage
+                        src={getImageSrc(product.coverImage || product.images?.[0])}
+                        alt={product.name}
+                        className="search-result-thumb"
+                        sizes="50px"
+                      />
                       <div className="result-info">
                         <h4>{product.name}</h4>
                         <p>

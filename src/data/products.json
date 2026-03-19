@@ -1,17 +1,20 @@
 [
   {
-    "id": "hoodie-anti-valentine",
+    "id": "hoodie-ace-whitebeard",
     "type": "hoodie",
-    "name": "anti-valentine",
-    "slug": "anti-valentine",
-    "tag": "anti-valentine",
+    "name": "Ace Whitebeard",
+    "slug": "ace-whitebeard",
+    "tag": "One Piece",
     "series": "On The Hood Series",
     "images": [
-      "/images/Hoodie/anti-valentine/an1 (1).png",
-      "/images/Hoodie/anti-valentine/an2 (1).png",
-      "/images/Hoodie/anti-valentine/an3 (1).png",
-      "/images/Hoodie/anti-valentine/antilove.png"
+      "/images/Hoodies/Ace - WhiteBeard/ace-whitebeard_1.png",
+      "/images/Hoodies/Ace - WhiteBeard/ace-whitebeard_2.png",
+      "/images/Hoodies/Ace - WhiteBeard/ace-whitebeard_3.png",
+      "/images/Hoodies/Ace - WhiteBeard/ace-whitebeard_4.jpeg",
+      "/images/Hoodies/Ace - WhiteBeard/ace-whitebeard_5.jpeg"
     ],
+    "coverImage": "/images/Hoodies/Ace - WhiteBeard/ace-whitebeard_1.png",
+    "updatedAt": "2026-03-19T18:31:54.395Z",
     "mrp": 1399,
     "price": 1099,
     "sizes": [
@@ -24,7 +27,103 @@
       "XXXL"
     ],
     "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-anti-valentine",
+    "type": "hoodie",
+    "name": "anti-valentine",
+    "slug": "anti-valentine",
+    "tag": "anti-valentine",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Anti Valentine/anti-valentine_1.png",
+      "/images/Hoodies/Anti Valentine/anti-valentine_2.png",
+      "/images/Hoodies/Anti Valentine/anti-valentine_3.png",
+      "/images/Hoodies/Anti Valentine/anti-valentine_4.jpeg",
+      "/images/Hoodies/Anti Valentine/anti-valentine_5.png"
+    ],
+    "coverImage": "/images/Hoodies/Anti Valentine/anti-valentine_1.png",
+    "updatedAt": "2026-03-19T18:31:54.424Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
     "featured": true
+  },
+  {
+    "id": "hoodie-avengers-doomsday",
+    "type": "hoodie",
+    "name": "Avengers Doomsday",
+    "slug": "avengers-doomsday",
+    "tag": "Marvel",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/AVENGERS DOOMSDAY/avengers-doomsday_1.jpg",
+      "/images/Hoodies/AVENGERS DOOMSDAY/avengers-doomsday_2.jpg",
+      "/images/Hoodies/AVENGERS DOOMSDAY/avengers-doomsday_3.jpg",
+      "/images/Hoodies/AVENGERS DOOMSDAY/avengers-doomsday_4.jpg",
+      "/images/Hoodies/AVENGERS DOOMSDAY/avengers-doomsday_5.jpg"
+    ],
+    "coverImage": "/images/Hoodies/AVENGERS DOOMSDAY/avengers-doomsday_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.428Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-berserk",
+    "type": "hoodie",
+    "name": "Berserk",
+    "slug": "berserk",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/BERSERK/berserk_1.jpg",
+      "/images/Hoodies/BERSERK/berserk_2.jpg",
+      "/images/Hoodies/BERSERK/berserk_3.jpg",
+      "/images/Hoodies/BERSERK/berserk_4.jpg",
+      "/images/Hoodies/BERSERK/berserk_5.png",
+      "/images/Hoodies/BERSERK/berserk_6.png",
+      "/images/Hoodies/BERSERK/berserk_7.jpg"
+    ],
+    "coverImage": "/images/Hoodies/BERSERK/berserk_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.433Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
   },
   {
     "id": "hoodie-deathly-hollows",
@@ -34,10 +133,13 @@
     "tag": "Harry Potter",
     "series": "On The Hood Series",
     "images": [
-      "/images/Hoodie/Deathly Hollows/da1 (1).png",
-      "/images/Hoodie/Deathly Hollows/da2 (1).png",
-      "/images/Hoodie/Deathly Hollows/da3 (1).png"
+      "/images/Hoodies/Deathly Hollows/deathly-hollows_1.jpeg",
+      "/images/Hoodies/Deathly Hollows/deathly-hollows_2.png",
+      "/images/Hoodies/Deathly Hollows/deathly-hollows_3.png",
+      "/images/Hoodies/Deathly Hollows/deathly-hollows_4.png"
     ],
+    "coverImage": "/images/Hoodies/Deathly Hollows/deathly-hollows_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.463Z",
     "mrp": 1399,
     "price": 1099,
     "sizes": [
@@ -50,7 +152,373 @@
       "XXXL"
     ],
     "category": "hoodie",
+    "categoryLabel": "Hoodies",
     "featured": true
+  },
+  {
+    "id": "hoodie-discipline",
+    "type": "hoodie",
+    "name": "Discipline",
+    "slug": "discipline",
+    "tag": "Quotes",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/DISCIPLINE/discipline_1.jpg",
+      "/images/Hoodies/DISCIPLINE/discipline_2.jpg",
+      "/images/Hoodies/DISCIPLINE/discipline_3.jpg"
+    ],
+    "coverImage": "/images/Hoodies/DISCIPLINE/discipline_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.465Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-divine-wrath",
+    "type": "hoodie",
+    "name": "Divine Wrath",
+    "slug": "divine-wrath",
+    "tag": "Mythology",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/DIVINE WRATH/divine-wrath_1.jpg",
+      "/images/Hoodies/DIVINE WRATH/divine-wrath_2.jpg",
+      "/images/Hoodies/DIVINE WRATH/divine-wrath_3.jpg"
+    ],
+    "coverImage": "/images/Hoodies/DIVINE WRATH/divine-wrath_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.468Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-dragon",
+    "type": "hoodie",
+    "name": "Dragon",
+    "slug": "dragon",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Dragon/dragon_1.png",
+      "/images/Hoodies/Dragon/dragon_2.png",
+      "/images/Hoodies/Dragon/dragon_3.png",
+      "/images/Hoodies/Dragon/dragon_4.png",
+      "/images/Hoodies/Dragon/dragon_5.jpeg",
+      "/images/Hoodies/Dragon/dragon_6.jpeg"
+    ],
+    "coverImage": "/images/Hoodies/Dragon/dragon_1.png",
+    "updatedAt": "2026-03-19T18:31:54.509Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-eternal-flames",
+    "type": "hoodie",
+    "name": "Eternal Flames",
+    "slug": "eternal-flames",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/ETERNAL FLAMES/eternal-flames_1.jpg",
+      "/images/Hoodies/ETERNAL FLAMES/eternal-flames_2.jpg"
+    ],
+    "coverImage": "/images/Hoodies/ETERNAL FLAMES/eternal-flames_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.511Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-ferrari-f1",
+    "type": "hoodie",
+    "name": "Ferrari F1",
+    "slug": "ferrari-f1",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/FERRARI F1/ferrari-f1_1.jpg",
+      "/images/Hoodies/FERRARI F1/ferrari-f1_2.jpg",
+      "/images/Hoodies/FERRARI F1/ferrari-f1_3.jpg",
+      "/images/Hoodies/FERRARI F1/ferrari-f1_4.jpg"
+    ],
+    "coverImage": "/images/Hoodies/FERRARI F1/ferrari-f1_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.515Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-heart-and-soul",
+    "type": "hoodie",
+    "name": "Heart And Soul",
+    "slug": "heart-and-soul",
+    "tag": "Quotes",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/HEART AND SOUL/heart-and-soul_1.jpg",
+      "/images/Hoodies/HEART AND SOUL/heart-and-soul_2.jpg"
+    ],
+    "coverImage": "/images/Hoodies/HEART AND SOUL/heart-and-soul_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.516Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-loki-one-piece",
+    "type": "hoodie",
+    "name": "Loki One Piece",
+    "slug": "loki-one-piece",
+    "tag": "One Piece",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Loki - One Piece/loki-one-piece_1.jpg",
+      "/images/Hoodies/Loki - One Piece/loki-one-piece_2.jpg",
+      "/images/Hoodies/Loki - One Piece/loki-one-piece_3.png",
+      "/images/Hoodies/Loki - One Piece/loki-one-piece_4.png",
+      "/images/Hoodies/Loki - One Piece/loki-one-piece_5.png",
+      "/images/Hoodies/Loki - One Piece/loki-one-piece_6.png"
+    ],
+    "coverImage": "/images/Hoodies/Loki - One Piece/loki-one-piece_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.529Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-madara",
+    "type": "hoodie",
+    "name": "Madara",
+    "slug": "madara",
+    "tag": "Naruto",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Madara/madara_1.png",
+      "/images/Hoodies/Madara/madara_2.png",
+      "/images/Hoodies/Madara/madara_3.jpeg",
+      "/images/Hoodies/Madara/madara_4.jpeg",
+      "/images/Hoodies/Madara/madara_5.png",
+      "/images/Hoodies/Madara/madara_6.jpeg"
+    ],
+    "coverImage": "/images/Hoodies/Madara/madara_1.png",
+    "updatedAt": "2026-03-19T18:31:54.541Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-maha-shivratri",
+    "type": "hoodie",
+    "name": "Maha Shivratri",
+    "slug": "maha-shivratri",
+    "tag": "Mythology",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Maha Shivratri/maha-shivratri_1.png",
+      "/images/Hoodies/Maha Shivratri/maha-shivratri_2.png",
+      "/images/Hoodies/Maha Shivratri/maha-shivratri_3.png",
+      "/images/Hoodies/Maha Shivratri/maha-shivratri_4.png",
+      "/images/Hoodies/Maha Shivratri/maha-shivratri_5.jpg"
+    ],
+    "coverImage": "/images/Hoodies/Maha Shivratri/maha-shivratri_1.png",
+    "updatedAt": "2026-03-19T18:31:54.549Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-nocturnal-instinct-wolf",
+    "type": "hoodie",
+    "name": "Nocturnal Instinct Wolf",
+    "slug": "nocturnal-instinct-wolf",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_1.jpg",
+      "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_2.jpg",
+      "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_3.jpg",
+      "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_4.jpg",
+      "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_5.png",
+      "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_6.jpg"
+    ],
+    "coverImage": "/images/Hoodies/NOCTURNAL INSTINCT - WOLF/nocturnal-instinct-wolf_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.552Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-quotes",
+    "type": "hoodie",
+    "name": "Quotes",
+    "slug": "quotes",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Quotes/quotes_1.jpeg",
+      "/images/Hoodies/Quotes/quotes_2.jpeg",
+      "/images/Hoodies/Quotes/quotes_3.png",
+      "/images/Hoodies/Quotes/quotes_4.png",
+      "/images/Hoodies/Quotes/quotes_5.png"
+    ],
+    "coverImage": "/images/Hoodies/Quotes/quotes_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.563Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
+  },
+  {
+    "id": "hoodie-quotes-can-you-rember",
+    "type": "hoodie",
+    "name": "Quotes Can You Rember",
+    "slug": "quotes-can-you-rember",
+    "tag": "General",
+    "series": "On The Hood Series",
+    "images": [
+      "/images/Hoodies/Quotes -  Can you Rember/quotes-can-you-rember_1.jpeg",
+      "/images/Hoodies/Quotes -  Can you Rember/quotes-can-you-rember_2.png",
+      "/images/Hoodies/Quotes -  Can you Rember/quotes-can-you-rember_3.jpeg",
+      "/images/Hoodies/Quotes -  Can you Rember/quotes-can-you-rember_4.png",
+      "/images/Hoodies/Quotes -  Can you Rember/quotes-can-you-rember_5.png"
+    ],
+    "coverImage": "/images/Hoodies/Quotes -  Can you Rember/quotes-can-you-rember_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.572Z",
+    "mrp": 1399,
+    "price": 1099,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
   },
   {
     "id": "hoodie-sukuna-jjk",
@@ -60,11 +528,15 @@
     "tag": "Jujutsu Kaisen",
     "series": "On The Hood Series",
     "images": [
-      "/images/Hoodie/Sukuna -JJk/sukuna1.png",
-      "/images/Hoodie/Sukuna -JJk/sukuna2.png",
-      "/images/Hoodie/Sukuna -JJk/sukuna3.png",
-      "/images/Hoodie/Sukuna -JJk/sukuna4.png"
+      "/images/Hoodies/Sukuna Jjk/sukuna-jjk_1.jpeg",
+      "/images/Hoodies/Sukuna Jjk/sukuna-jjk_2.png",
+      "/images/Hoodies/Sukuna Jjk/sukuna-jjk_3.png",
+      "/images/Hoodies/Sukuna Jjk/sukuna-jjk_4.png",
+      "/images/Hoodies/Sukuna Jjk/sukuna-jjk_5.png",
+      "/images/Hoodies/Sukuna Jjk/sukuna-jjk_6.jpeg"
     ],
+    "coverImage": "/images/Hoodies/Sukuna Jjk/sukuna-jjk_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.577Z",
     "mrp": 1399,
     "price": 1099,
     "sizes": [
@@ -77,22 +549,27 @@
       "XXXL"
     ],
     "category": "hoodie",
+    "categoryLabel": "Hoodies",
     "featured": true
   },
   {
-    "id": "tee-akarshan",
-    "type": "tee",
-    "name": "Sukuna",
-    "slug": "sukuna",
-    "tag": "Jujutsu Kaisen",
-    "series": "On The Go Series",
+    "id": "hoodie-valentine",
+    "type": "hoodie",
+    "name": "Valentine",
+    "slug": "valentine",
+    "tag": "General",
+    "series": "On The Hood Series",
     "images": [
-      "/images/Oversized Tshirts/Sukuna/Sukuna_1.jpg",
-      "/images/Oversized Tshirts/Sukuna/Sukuna_2.jpg",
-      "/images/Oversized Tshirts/Sukuna/Sukuna_3.jpg"
+      "/images/Hoodies/Valentine/valentine_1.png",
+      "/images/Hoodies/Valentine/valentine_2.png",
+      "/images/Hoodies/Valentine/valentine_3.png",
+      "/images/Hoodies/Valentine/valentine_4.jpeg",
+      "/images/Hoodies/Valentine/valentine_5.jpeg"
     ],
-    "mrp": 699,
-    "price": 599,
+    "coverImage": "/images/Hoodies/Valentine/valentine_1.png",
+    "updatedAt": "2026-03-19T18:31:54.603Z",
+    "mrp": 1399,
+    "price": 1099,
     "sizes": [
       "XS",
       "S",
@@ -102,8 +579,9 @@
       "XXL",
       "XXXL"
     ],
-    "category": "tee",
-    "featured": true
+    "category": "hoodie",
+    "categoryLabel": "Hoodies",
+    "featured": false
   },
   {
     "id": "tee-dhurandar",
@@ -113,36 +591,15 @@
     "tag": "dhurandar",
     "series": "On The Go Series",
     "images": [
-      "/images/Oversized Tshirts/Dhurandar/Dhurandar_1.jpeg",
-      "/images/Oversized Tshirts/Dhurandar/Dhurandar_2.jpeg",
-      "/images/Oversized Tshirts/Dhurandar/Dhurandar_3.png",
-      "/images/Oversized Tshirts/Dhurandar/Dhurandar_4.png"
+      "/images/Oversized Tshirts/Dhurandar/dhurandar_1.jpeg",
+      "/images/Oversized Tshirts/Dhurandar/dhurandar_2.jpeg",
+      "/images/Oversized Tshirts/Dhurandar/dhurandar_3.png",
+      "/images/Oversized Tshirts/Dhurandar/dhurandar_4.png",
+      "/images/Oversized Tshirts/Dhurandar/dhurandar_5.png",
+      "/images/Oversized Tshirts/Dhurandar/dhurandar_6.png"
     ],
-    "mrp": 699,
-    "price": 599,
-    "sizes": [
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL"
-    ],
-    "category": "tee"
-  },
-  {
-    "id": "tee-harry-potter",
-    "type": "tee",
-    "name": "Harry Potter",
-    "slug": "harry-potter",
-    "tag": "Harry Potter",
-    "series": "On The Go Series",
-    "images": [
-      "/images/Oversized Tshirts/Harry Potter/Harry Potter_1.png",
-      "/images/Oversized Tshirts/Harry Potter/Harry Potter_2.png",
-      "/images/Oversized Tshirts/Harry Potter/Harry Potter_3.png"
-    ],
+    "coverImage": "/images/Oversized Tshirts/Dhurandar/dhurandar_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.249Z",
     "mrp": 699,
     "price": 599,
     "sizes": [
@@ -155,6 +612,38 @@
       "XXXL"
     ],
     "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": false
+  },
+  {
+    "id": "tee-harry-potter",
+    "type": "tee",
+    "name": "Harry Potter",
+    "slug": "harry-potter",
+    "tag": "Harry Potter",
+    "series": "On The Go Series",
+    "images": [
+      "/images/Oversized Tshirts/Harry Potter/harry-potter_1.jpeg",
+      "/images/Oversized Tshirts/Harry Potter/harry-potter_2.png",
+      "/images/Oversized Tshirts/Harry Potter/harry-potter_3.png",
+      "/images/Oversized Tshirts/Harry Potter/harry-potter_4.png",
+      "/images/Oversized Tshirts/Harry Potter/harry-potter_5.jpeg"
+    ],
+    "coverImage": "/images/Oversized Tshirts/Harry Potter/harry-potter_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.252Z",
+    "mrp": 699,
+    "price": 599,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
     "featured": true
   },
   {
@@ -165,35 +654,12 @@
     "tag": "TMKOC",
     "series": "On The Go Series",
     "images": [
-      "/images/Oversized Tshirts/Jethalal Kite/Jethalal Kite_1.png",
-      "/images/Oversized Tshirts/Jethalal Kite/Jethalal Kite_2.png",
-      "/images/Oversized Tshirts/Jethalal Kite/Jethalal Kite_3.png"
+      "/images/Oversized Tshirts/Jethalal Kite/jethalal-kite_1.png",
+      "/images/Oversized Tshirts/Jethalal Kite/jethalal-kite_2.png",
+      "/images/Oversized Tshirts/Jethalal Kite/jethalal-kite_3.png"
     ],
-    "mrp": 699,
-    "price": 599,
-    "sizes": [
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL"
-    ],
-    "category": "tee"
-  },
-  {
-    "id": "tee-sasuke-kakashi",
-    "type": "tee",
-    "name": "sasuke and kakashi",
-    "slug": "sasuke-kakashi",
-    "tag": "Naruto",
-    "series": "On The Go Series",
-    "images": [
-      "/images/Oversized Tshirts/Sasuke And Kakashi/Sasuke And Kakashi_1.jpeg",
-      "/images/Oversized Tshirts/Sasuke And Kakashi/Sasuke And Kakashi_2.jpeg",
-      "/images/Oversized Tshirts/Sasuke And Kakashi/Sasuke And Kakashi_3.png"
-    ],
+    "coverImage": "/images/Oversized Tshirts/Jethalal Kite/jethalal-kite_1.png",
+    "updatedAt": "2026-03-19T18:31:54.270Z",
     "mrp": 699,
     "price": 599,
     "sizes": [
@@ -206,7 +672,102 @@
       "XXXL"
     ],
     "category": "tee",
-    "featured": true
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": false
+  },
+  {
+    "id": "tee-overthink-quote",
+    "type": "tee",
+    "name": "Overthink Quote",
+    "slug": "overthink-quote",
+    "tag": "Quotes",
+    "series": "On The Go Series",
+    "images": [
+      "/images/Oversized Tshirts/Overthink Quote/overthink-quote_1.png",
+      "/images/Oversized Tshirts/Overthink Quote/overthink-quote_2.png",
+      "/images/Oversized Tshirts/Overthink Quote/overthink-quote_3.png",
+      "/images/Oversized Tshirts/Overthink Quote/overthink-quote_4.png"
+    ],
+    "coverImage": "/images/Oversized Tshirts/Overthink Quote/overthink-quote_1.png",
+    "updatedAt": "2026-03-19T18:31:54.279Z",
+    "mrp": 699,
+    "price": 599,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": false
+  },
+  {
+    "id": "tee-sasuke-and-kakashi",
+    "type": "tee",
+    "name": "Sasuke And Kakashi",
+    "slug": "sasuke-and-kakashi",
+    "tag": "Naruto",
+    "series": "On The Go Series",
+    "images": [
+      "/images/Oversized Tshirts/Sasuke And Kakashi/sasuke-and-kakashi_1.jpeg",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/sasuke-and-kakashi_2.jpeg",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/sasuke-and-kakashi_3.png",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/sasuke-and-kakashi_4.png",
+      "/images/Oversized Tshirts/Sasuke And Kakashi/sasuke-and-kakashi_5.png"
+    ],
+    "coverImage": "/images/Oversized Tshirts/Sasuke And Kakashi/sasuke-and-kakashi_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.283Z",
+    "mrp": 699,
+    "price": 599,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": false
+  },
+  {
+    "id": "tee-shiva",
+    "type": "tee",
+    "name": "Shiva",
+    "slug": "shiva",
+    "tag": "Shiva",
+    "series": "On The Go Series",
+    "images": [
+      "/images/Oversized Tshirts/Shiva/shiva_1.jpeg",
+      "/images/Oversized Tshirts/Shiva/shiva_2.jpeg",
+      "/images/Oversized Tshirts/Shiva/shiva_3.jpeg",
+      "/images/Oversized Tshirts/Shiva/shiva_4.jpeg",
+      "/images/Oversized Tshirts/Shiva/shiva_5.jpeg",
+      "/images/Oversized Tshirts/Shiva/shiva_6.jpeg",
+      "/images/Oversized Tshirts/Shiva/shiva_7.png"
+    ],
+    "coverImage": "/images/Oversized Tshirts/Shiva/shiva_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.287Z",
+    "mrp": 699,
+    "price": 599,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": false
   },
   {
     "id": "tee-slytherin",
@@ -216,10 +777,14 @@
     "tag": "Harry Potter",
     "series": "On The Go Series",
     "images": [
-      "/images/Oversized Tshirts/Slytherin/Slytherin_1.jpeg",
-      "/images/Oversized Tshirts/Slytherin/Slytherin_2.png",
-      "/images/Oversized Tshirts/Slytherin/Slytherin_3.png"
+      "/images/Oversized Tshirts/Slytherin/slytherin_1.jpeg",
+      "/images/Oversized Tshirts/Slytherin/slytherin_2.jpeg",
+      "/images/Oversized Tshirts/Slytherin/slytherin_3.png",
+      "/images/Oversized Tshirts/Slytherin/slytherin_4.png",
+      "/images/Oversized Tshirts/Slytherin/slytherin_5.png"
     ],
+    "coverImage": "/images/Oversized Tshirts/Slytherin/slytherin_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.305Z",
     "mrp": 699,
     "price": 599,
     "sizes": [
@@ -232,6 +797,7 @@
       "XXXL"
     ],
     "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
     "featured": true
   },
   {
@@ -242,11 +808,15 @@
     "tag": "Solo Leveling",
     "series": "On The Go Series",
     "images": [
-      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_1.jpeg",
-      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_2.jpeg",
-      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_3.png",
-      "/images/Oversized Tshirts/Solo Leveling/Solo Leveling_4.png"
+      "/images/Oversized Tshirts/Solo Leveling/solo-leveling_1.jpeg",
+      "/images/Oversized Tshirts/Solo Leveling/solo-leveling_2.jpeg",
+      "/images/Oversized Tshirts/Solo Leveling/solo-leveling_3.png",
+      "/images/Oversized Tshirts/Solo Leveling/solo-leveling_4.png",
+      "/images/Oversized Tshirts/Solo Leveling/solo-leveling_5.png",
+      "/images/Oversized Tshirts/Solo Leveling/solo-leveling_6.png"
     ],
+    "coverImage": "/images/Oversized Tshirts/Solo Leveling/solo-leveling_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.334Z",
     "mrp": 699,
     "price": 599,
     "sizes": [
@@ -259,6 +829,7 @@
       "XXXL"
     ],
     "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
     "featured": true
   },
   {
@@ -269,10 +840,14 @@
     "tag": "Marvel",
     "series": "On The Go Series",
     "images": [
-      "/images/Oversized Tshirts/Spiderman/Spiderman_1.jpeg",
-      "/images/Oversized Tshirts/Spiderman/Spiderman_2.jpeg",
-      "/images/Oversized Tshirts/Spiderman/Spiderman_3.png"
+      "/images/Oversized Tshirts/Spiderman/spiderman_1.jpeg",
+      "/images/Oversized Tshirts/Spiderman/spiderman_2.png",
+      "/images/Oversized Tshirts/Spiderman/spiderman_3.png",
+      "/images/Oversized Tshirts/Spiderman/spiderman_4.png",
+      "/images/Oversized Tshirts/Spiderman/spiderman_5.jpeg"
     ],
+    "coverImage": "/images/Oversized Tshirts/Spiderman/spiderman_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.354Z",
     "mrp": 699,
     "price": 599,
     "sizes": [
@@ -285,7 +860,75 @@
       "XXXL"
     ],
     "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
     "featured": true
+  },
+  {
+    "id": "tee-akarshan",
+    "type": "tee",
+    "name": "Sukuna",
+    "slug": "sukuna",
+    "tag": "Jujutsu Kaisen",
+    "series": "On The Go Series",
+    "images": [
+      "/images/Oversized Tshirts/Sukuna/sukuna_1.jpg",
+      "/images/Oversized Tshirts/Sukuna/sukuna_2.jpg",
+      "/images/Oversized Tshirts/Sukuna/sukuna_3.jpg",
+      "/images/Oversized Tshirts/Sukuna/sukuna_4.jpg",
+      "/images/Oversized Tshirts/Sukuna/sukuna_5.jpg",
+      "/images/Oversized Tshirts/Sukuna/sukuna_6.png",
+      "/images/Oversized Tshirts/Sukuna/sukuna_7.png",
+      "/images/Oversized Tshirts/Sukuna/sukuna_8.png"
+    ],
+    "coverImage": "/images/Oversized Tshirts/Sukuna/sukuna_1.jpg",
+    "updatedAt": "2026-03-19T18:31:54.358Z",
+    "mrp": 699,
+    "price": 599,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": true
+  },
+  {
+    "id": "tee-the-family-man",
+    "type": "tee",
+    "name": "The Family Man",
+    "slug": "the-family-man",
+    "tag": "Movies",
+    "series": "On The Go Series",
+    "images": [
+      "/images/Oversized Tshirts/The Family Man/the-family-man_1.jpeg",
+      "/images/Oversized Tshirts/The Family Man/the-family-man_2.png",
+      "/images/Oversized Tshirts/The Family Man/the-family-man_3.png",
+      "/images/Oversized Tshirts/The Family Man/the-family-man_4.png",
+      "/images/Oversized Tshirts/The Family Man/the-family-man_5.png",
+      "/images/Oversized Tshirts/The Family Man/the-family-man_6.jpeg",
+      "/images/Oversized Tshirts/The Family Man/the-family-man_7.jpeg"
+    ],
+    "coverImage": "/images/Oversized Tshirts/The Family Man/the-family-man_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.362Z",
+    "mrp": 699,
+    "price": 599,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
+    "featured": false
   },
   {
     "id": "tee-zoro",
@@ -295,10 +938,14 @@
     "tag": "One Piece",
     "series": "On The Go Series",
     "images": [
-      "/images/Oversized Tshirts/Zoro/Zoro_1.jpeg",
-      "/images/Oversized Tshirts/Zoro/Zoro_2.jpeg",
-      "/images/Oversized Tshirts/Zoro/Zoro_3.png"
+      "/images/Oversized Tshirts/Zoro/zoro_1.jpeg",
+      "/images/Oversized Tshirts/Zoro/zoro_2.png",
+      "/images/Oversized Tshirts/Zoro/zoro_3.png",
+      "/images/Oversized Tshirts/Zoro/zoro_4.png",
+      "/images/Oversized Tshirts/Zoro/zoro_5.jpeg"
     ],
+    "coverImage": "/images/Oversized Tshirts/Zoro/zoro_1.jpeg",
+    "updatedAt": "2026-03-19T18:31:54.366Z",
     "mrp": 699,
     "price": 599,
     "sizes": [
@@ -311,85 +958,7 @@
       "XXXL"
     ],
     "category": "tee",
+    "categoryLabel": "Oversized T-Shirts",
     "featured": true
-  },
-  {
-    "id": "tee-overthink-quote",
-    "type": "tee",
-    "name": "Overthink Quote",
-    "slug": "overthink-quote",
-    "tag": "Quotes",
-    "series": "On The Go Series",
-    "images": [
-      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_1.png",
-      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_2.png",
-      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_3.png",
-      "/images/Oversized Tshirts/Overthink Quote/Overthink Quote_4.png"
-    ],
-    "mrp": 699,
-    "price": 599,
-    "sizes": [
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL"
-    ],
-    "category": "tee"
-  },
-  {
-    "id": "tee-shiva",
-    "type": "tee",
-    "name": "Shiva",
-    "slug": "shiva",
-    "tag": "Shiva",
-    "series": "On The Go Series",
-    "images": [
-      "/images/Oversized Tshirts/Shiva/Shiva_1.jpeg",
-      "/images/Oversized Tshirts/Shiva/Shiva_2.jpeg",
-      "/images/Oversized Tshirts/Shiva/Shiva_3.jpeg",
-      "/images/Oversized Tshirts/Shiva/Shiva_4.jpeg",
-      "/images/Oversized Tshirts/Shiva/Shiva_5.jpeg"
-    ],
-    "mrp": 699,
-    "price": 599,
-    "sizes": [
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL"
-    ],
-    "category": "tee"
-  },
-  {
-    "id": "tee-family-man",
-    "type": "tee",
-    "name": "The Family Man",
-    "slug": "family-man",
-    "tag": "The Family Man",
-    "series": "On The Go Series",
-    "images": [
-      "/images/Oversized Tshirts/The Family Man/The Family Man_1.png",
-      "/images/Oversized Tshirts/The Family Man/The Family Man_2.png",
-      "/images/Oversized Tshirts/The Family Man/The Family Man_3.png",
-      "/images/Oversized Tshirts/The Family Man/The Family Man_4.png"
-    ],
-    "mrp": 699,
-    "price": 599,
-    "sizes": [
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL"
-    ],
-    "category": "tee"
   }
 ]

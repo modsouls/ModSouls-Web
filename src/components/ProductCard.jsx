@@ -15,7 +15,12 @@ const ProductCard = memo(({ product }) => {
     <motion.div className="product-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
       <div className="product-image-wrapper" onMouseEnter={() => product.images?.length > 1 && setHoveredImage(1)} onMouseLeave={() => setHoveredImage(0)}>
         <Link to={`/product/${product.id}`}>
-          <ProgressiveImage src={getImageSrc(product.images?.[hoveredImage] || product.images?.[0])} alt={product.name} className="product-image" />
+          <ProgressiveImage
+            src={getImageSrc(product.images?.[hoveredImage] || product.coverImage || product.images?.[0])}
+            alt={`${product.name} ${product.type === 'tee' ? 'oversized T-shirt' : 'hoodie'}`}
+            className="product-image"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+          />
         </Link>
         <button type="button" className={`wishlist-btn ${inWishlist ? 'active' : ''}`} onClick={() => toggleWishlist(product)} aria-label="Add to wishlist">
           <svg width="24" height="24" viewBox="0 0 24 24" fill={inWishlist ? 'currentColor' : 'none'} stroke="currentColor">
@@ -24,7 +29,10 @@ const ProductCard = memo(({ product }) => {
         </button>
       </div>
       <div className="product-content">
-        <span className="product-tag">{product.tag}</span>
+        <div className="product-meta-row">
+          <span className="product-tag">{product.tag}</span>
+          <span className="product-category">{product.categoryLabel || (product.type === 'tee' ? 'Oversized T-Shirts' : 'Hoodies')}</span>
+        </div>
         <Link to={`/product/${product.id}`}><h3 className="product-name">{product.name}</h3></Link>
         <p className="product-type">{product.type === 'tee' ? 'Oversized T-Shirt (Unisex)' : 'Premium Hoodie (Unisex)'}</p>
         <div className="product-price">

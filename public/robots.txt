@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api
+Disallow: /admin
+Disallow: /cart
+Disallow: /checkout
+Disallow: /wishlist
+
+Sitemap: https://modsouls.in/sitemap.xml
