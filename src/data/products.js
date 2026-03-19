@@ -1,4 +1,5 @@
 import productsData from './products.json';
+import imageManifest from './imageManifest.json';
 
 export const products = productsData;
 
@@ -21,4 +22,7 @@ export const formatINR = (amount) => `₹${amount.toLocaleString('en-IN')}`;
 export const getProductById = (id) => productById.get(id);
 
 /** Use for img src so paths with spaces/special chars load correctly. */
-export const getImageSrc = (path) => (path && typeof path === 'string' ? encodeURI(path) : path || '');
+export const getImageSrc = (path) => {
+  if (!path || typeof path !== 'string') return path || '';
+  return encodeURI(imageManifest[path] || path);
+};

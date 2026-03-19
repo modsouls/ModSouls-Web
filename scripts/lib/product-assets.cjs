@@ -17,7 +17,7 @@ const CATEGORY_CONFIG = {
     routeLabel: 'Oversized T-Shirt',
     publicSegment: 'Oversized Tshirts',
     targetDir: path.join(PUBLIC_IMAGES_DIR, 'Oversized Tshirts'),
-    sourceDirs: [path.resolve(ROOT, '..', 'Oversized Tshirts')],
+    sourceDirs: [],
     folderAliases: {
       akarshan: 'Sukuna',
       'quote-pintu': 'Overthink Quote',
@@ -35,7 +35,7 @@ const CATEGORY_CONFIG = {
     routeLabel: 'Premium Hoodie',
     publicSegment: 'Hoodies',
     targetDir: path.join(PUBLIC_IMAGES_DIR, 'Hoodies'),
-    sourceDirs: [path.join(PUBLIC_IMAGES_DIR, 'Hoodie')],
+    sourceDirs: [],
     folderAliases: {
       'anti-valentine': 'Anti Valentine',
       'sukuna-jjk': 'Sukuna Jjk',
